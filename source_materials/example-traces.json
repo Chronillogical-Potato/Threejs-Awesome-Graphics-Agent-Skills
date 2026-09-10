@@ -75,6 +75,30 @@
         ]
       }
     ],
+    "threejs-procedural-materials/softbody-jelly": [
+      {
+        "source": "author-local-softbody-jelly",
+        "files": [
+          "jelly-webgpu.html"
+        ],
+        "mechanisms": [
+          "regular triangular-lattice flower cross sections with a five-lobed contour, globally ordered prism tetrahedralisation, signed-volume correction, and watertight boundary assertions",
+          "two Loop subdivision passes represented as position stencils so the smooth optical shell follows the simulation cage without changing the tetrahedral state",
+          "fixed-step XPBD compressible neo-Hookean mechanics with coupled deviatoric and hydrostatic constraints, a unilateral determinant barrier, contact, grabbing, and finite-state recovery",
+          "centre-of-mass, rigid-spin, and internal damping decomposition with RMS sleep detection, dynamic normals, volume metrics, and kinetic-energy diagnostics",
+          "refitted triangle BVH with geometric-normal fallback, exact unpolarised Fresnel refraction, view-ray thickness, bounded internal reflection, and Beer-Lambert absorption",
+          "192 by 192 receiver transport with 42 by 42 stratified RGB samples, normalised Gaussian photon splats, direct shadow/contact buffers, and edge clearing"
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "the reusable module owns the cage, smooth shell, mechanics, grab constraints, optical BVH, refractive receiver textures, physical material, diagnostics, metrics, and cleanup while accepting the gallery camera, controls, and pointer element",
+          "renderer creation, scene ownership, camera, orbit controls, generated bench texture, floor, directional light, runtime clock, and gallery metadata remain in the development adapter",
+          "the loading veil, page typography, control panel, HUD, CDN import map, and standalone error presentation are omitted",
+          "the gallery runtime supplies scaled and paused deltas while retaining the 240 hertz fixed mechanics step, twelve-step catch-up cap, 24 hertz optical refresh, and pointer-grab mechanics",
+          "wireframe, refractive-shadow, and RGB-caustic modes are inspection-only branches and leave the calibrated final material and transport path unchanged"
+        ]
+      }
+    ],
     "threejs-procedural-vegetation/gpu-culled-flower-field": [
       {
         "source": "inkwell-webgpu-flowers",

@@ -99,6 +99,14 @@
         "bg_1k.exr": "7e33754241427076656189a143c78ca33ddc4b4ded9a005851d962326c83a0b7"
       }
     },
+    "author-local-softbody-jelly": {
+      "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+      "revision": "04856286f29b9b6e0730e798bd943753492278c3",
+      "license": "MIT by project rule",
+      "files": {
+        "jelly-webgpu.html": "19c29c05859b3ed65fbd4e583e217deaf7b87546132af5723ec2c5599f259513"
+      }
+    },
     "author-local-glass-sculpture": {
       "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
       "revision": "05e02fe402ce2e48d3bc1fc6807b92cbd24f727f",

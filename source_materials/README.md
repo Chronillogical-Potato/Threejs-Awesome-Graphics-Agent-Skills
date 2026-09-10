@@ -70,6 +70,9 @@ hashes. The author explicitly confirmed that both projects are MIT material.
 The filmic lens-flare intake was reviewed against project state
 `1ad2171695a3594d282558a0d813ce336f11678b`; its compositor and both HDRI tiers
 are pinned by exact hashes, and the author explicitly confirmed MIT licensing.
+The softbody-jelly intake was supplied as a local file at project state
+`04856286f29b9b6e0730e798bd943753492278c3`; it has no separate upstream
+revision, is treated as MIT under the project rule, and is pinned by hash.
 
 | File | SHA-256 | Reviewed areas | Mechanisms distilled into |
 | --- | --- | --- | --- |
@@ -84,8 +87,9 @@ are pinned by exact hashes, and the author explicitly confirmed MIT licensing.
 | `source_materials/glass_sculpture/index.html` | `756f2753611352239f260f156cfe47e19ab1b73922328cf1635590dca1a939c2` | single-file WebGPU/TSL physically based glass: inverted-depth double-sided back-face data pass, image-space interior exit search, exact unpolarized Fresnel with total internal reflection, Beer-Lambert path absorption, Cauchy per-wavelength index from an (n_d, Abbe) pair, CIE 1931 spectral recombination, shared equirectangular probe, and thickness/normal/Fresnel debug views | `$threejs-procedural-materials`; only the glass system is distributed, while model normalization, camera, controls, GUI, and presentation remain in the dev gallery shim |
 | `source_materials/ocean_beach/index.html` | `ec93e9c6ecb55c13d82c7b2052eb07c73b5e547d70c1c3ac5eb30656665a6af6` | modular WebGPU/TSL coastal ocean: deterministic directional gravity/capillary fields, signed-distance mainland and island, arclength coast tables, conserved-volume swash chains, persistent world/film foam, warped camera-following geometry, wet-sand optics, shared analytic sky, camera, controls, and diagnostics | `$threejs-spectral-ocean`; the complete ocean/coast/swash/foam/sand implementation is distributed, while renderer lifecycle, visible sky mesh, camera, controls, and gallery integration remain in the dev shim |
 | `source_materials/soap_bubble/soap_bubble.html` | `af679c8840b996560b829f4d359c4e0fd156681c5124bc854dfa6af1174d1916` | single-file WebGPU/TSL soap-bubble system: exact air-film-air Airy reflectance, RGB wavelength bands, front/rear membranes, analytic neighboring-bubble reflections, physical flight and capillary modes, camera-aware inflow, Taylor-Culick rupture, and pooled visible drops | `$threejs-procedural-materials`; every bubble-specific mechanism is distributed, while renderer, scene, camera, controls, and the selected 2K EXR remain in the dev gallery shim |
-| `source_materials/diffraction_grating/diffraction_grating.html` | `80eb43dfd45dfd28c16324cd233db2c6737963d8756d0ac11bda288352948470` | layered reflective diffraction card: pure TSL `Fn`/`If`/`Loop` optical graph, procedural groove masks, analytic spectral conversion, phase-grating order efficiency, coherence/azimuth broadening, finite-emitter integration, and additive HDR optical composition | `$threejs-procedural-materials`; the whole diffraction material system is distributed, while the printed card artwork is dev-only |
+| `source_materials/diffraction_grating/diffraction_grating.html` | `80eb43dfd45dfd28c16324cd233db2c6737963d8756d0ac11bda288352948470` | layered reflective diffraction card: pure TSL `Fn`/`If`/`Loop` optical graph, procedural groove masks, analytic spectral conversion, phase-grating order efficiency, coherence/azimuth broadening, finite-emitter integration, and additive HDR optical composition | `$threejs-procedural-materials`; the whole diffraction material system is distributed, while the printed card artwork is dev-only | 
 | `source_materials/optimus.html` | `ccecce42bfd568c8b44753231f584f1c32ae4b25edeeec080a0b72fe51b0d8ee` | complete procedural humanoid geometry and material system: polygon operations, CSG difference, bevels, lofts, pillow panels, semantic body assembly, procedural PBR materials, and deterministic topology statistics | `$threejs-procedural-geometry`; the complete geometry and material implementation is distributed, while the studio, camera, controls, and runtime remain in the dev gallery shim |
+| `source_materials/jelly-webgpu.html` | `19c29c05859b3ed65fbd4e583e217deaf7b87546132af5723ec2c5599f259513` | single-file WebGPU/TSL softbody study: triangular-lattice flower cage, two-pass Loop shell, fixed-step XPBD neo-Hookean mechanics, dynamic BVH refraction, RGB absorption, finite receiver shadows and caustics, and physical transmission material | `$threejs-procedural-materials`; the reusable softbody/optics/material system is distributed, while renderer, camera, floor, light, controls, and page presentation remain in the dev gallery shim |
 
 ### Local-project findings retained
 
@@ -421,6 +425,42 @@ named hierarchy, shared material dictionary, semantic collections,
 deterministic statistics, and disposal contract. HTML presentation, renderer,
 camera, orbit controls, environment, lights, floor, loading UI, HUD, and error
 overlay remain in the dev gallery adapter.
+
+### `jelly-webgpu.html`
+
+Reviewed:
+
+- the regular triangular-lattice cross sections, five-lobed flower contour,
+  globally ordered prism tetrahedralisation, signed-volume correction, and
+  watertight boundary checks;
+- two Loop subdivision passes represented as exact source-node stencils so the
+  rendered optical shell can move with the coarser simulation cage;
+- compressible neo-Hookean XPBD with coupled deviatoric and hydrostatic solves,
+  a unilateral determinant barrier, fixed `1/240 s` integration, gravity,
+  frictional floor contact, limited local grabbing, and finite-state recovery;
+- centre-of-mass, rigid-spin, and internal damping decomposition with RMS sleep
+  detection, dynamic surface normals, volume/energy metrics, and nudge/reset
+  controls;
+- a refitted triangle BVH with ray/box traversal, geometric-normal fallback,
+  exact unpolarised Fresnel transmission, view-ray thickness, and bounded
+  internal reflection;
+- a `192 × 192` receiver field with `42 × 42` stratified RGB transport samples,
+  three dispersed indices, per-channel Beer-Lambert attenuation, normalised
+  Gaussian splats, contact/shadow buffers, and edge clearing;
+- the WebGPU physical jelly material with transmission, dispersion, clearcoat,
+  shared optical thickness, and berry/mint/honey extinction presets.
+
+Accepted consumption:
+
+- `$threejs-procedural-materials`
+
+The distributed `softbody-jelly` example owns the cage, smooth optical shell,
+mechanics, interaction mechanics, BVH, refractive receiver textures, physical
+material, diagnostics, metrics, and disposal contract. The gallery adapter owns
+the WebGPU renderer, camera, orbit controls, generated receiver artwork, floor,
+sun, runtime clock, and metadata. Loading UI, page copy, HUD, sliders, and
+error presentation remain outside the reusable module. The adapter uses the
+package-installed Three.js revision while retaining the WebGPU and TSL design.
 
 ## Supplied external repositories
 

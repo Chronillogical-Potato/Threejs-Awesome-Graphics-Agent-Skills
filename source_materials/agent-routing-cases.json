@@ -647,6 +647,19 @@
           ]
         }
       ]
+    },
+    {
+      "request": "Create a draggable translucent flower-shaped softbody jelly whose XPBD deformation, transmission, absorption, refractive shadow, and RGB caustics remain coupled.",
+      "routes": [
+        {
+          "skill": "threejs-procedural-materials",
+          "signals": [
+            "softbody jelly materials",
+            "XPBD mechanics",
+            "refractive caustics"
+          ]
+        }
+      ]
     }
   ],
   "boundaries": [

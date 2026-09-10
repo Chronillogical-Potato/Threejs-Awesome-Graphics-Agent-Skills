@@ -28,6 +28,14 @@ import {
   diffractionOrderWavelengthNm,
 } from "../skills/threejs-procedural-materials/examples/physical-diffraction-grating/physical-diffraction-grating.js";
 import {
+  SOFTBODY_JELLY_DEFAULTS,
+  SOFTBODY_JELLY_LOOKS,
+  RefractiveLightField,
+  SoftBody,
+  makeFlowerCage,
+  refractRay,
+} from "../skills/threejs-procedural-materials/examples/softbody-jelly/softbody-jelly.js";
+import {
   OPTIMUS_COLLECTION_ORDER,
   createProceduralOptimusHumanoid,
 } from "../skills/threejs-procedural-geometry/examples/procedural-optimus-humanoid/source/optimus-humanoid-system.js";
@@ -188,6 +196,92 @@ function testSpectralDispersiveGlassOpticsParity() {
     "glass absorption spectrum",
     1e-9,
   );
+}
+
+function testSoftbodyJellyParity() {
+  assert.deepEqual(
+    SOFTBODY_JELLY_DEFAULTS,
+    {
+      density: 1050,
+      shear: 600,
+      bulk: 65000,
+      damping: 3,
+      gravity: 9.81,
+      step: 1 / 240,
+      iterations: 3,
+      staticFriction: 0.65,
+      dynamicFriction: 0.42,
+      restitution: 0.065,
+      floor: 0.00015,
+      maxGrabForce: 2.8,
+    },
+    "softbody-jelly physics defaults",
+  );
+  assert.deepEqual(
+    SOFTBODY_JELLY_LOOKS.berry.sigma,
+    [5, 46, 23],
+    "softbody-jelly berry extinction",
+  );
+
+  const cage = makeFlowerCage();
+  assert.equal(cage.pos.length / 3, 762, "softbody-jelly cage node count");
+  assert.equal(cage.tets.length, 3240, "softbody-jelly tetrahedron count");
+  assert.equal(cage.boundary.length, 792, "softbody-jelly boundary triangle count");
+  assert.ok(
+    Math.abs(cage.totalVolume - 0.00011933031247661388) < 1e-18,
+    "softbody-jelly rest volume",
+  );
+
+  const body = new SoftBody(cage);
+  assert.equal(
+    body.surface.stencils.length,
+    6338,
+    "softbody-jelly smooth-shell vertex count",
+  );
+  assert.equal(
+    body.surface.indices.length / 3,
+    12672,
+    "softbody-jelly smooth-shell triangle count",
+  );
+  assert.ok(
+    Math.abs(body.totalMass - 0.12529682810044418) < 1e-15,
+    "softbody-jelly rest mass",
+  );
+  assertVector(
+    body.center.toArray(),
+    [-0.000001684837451731872, 0.031000000000150137, -3.366955965335844e-19],
+    "softbody-jelly rest centre",
+    1e-15,
+  );
+
+  const optics = new RefractiveLightField(body.surface);
+  assert.equal(optics.size, 192, "softbody-jelly receiver resolution");
+  assert.equal(optics.samples, 42, "softbody-jelly transport sample grid");
+  assert.equal(optics.minSpan, 0.22, "softbody-jelly receiver minimum span");
+  assert.equal(optics.maxSpan, 0.75, "softbody-jelly receiver maximum span");
+  assert.equal(
+    optics.photons.length,
+    192 * 192 * 3,
+    "softbody-jelly RGB photon storage",
+  );
+
+  const normalIncidence = refractRay([0, -1, 0], [0, 1, 0], 1, 1.35);
+  assert.ok(normalIncidence, "softbody-jelly normal-incidence refraction");
+  assertVector(
+    normalIncidence.direction,
+    [0, -1, 0],
+    "softbody-jelly normal-incidence direction",
+    1e-15,
+  );
+  assert.equal(
+    normalIncidence.transmission,
+    0.977818017202354,
+    "softbody-jelly normal-incidence transmission",
+  );
+
+  body.surface.geometry.dispose();
+  optics.lightTexture.dispose();
+  optics.shadowTexture.dispose();
 }
 
 function testTraversableWormholeShapeParity() {
@@ -414,6 +508,7 @@ function testProceduralOptimusHumanoidParity() {
 testPorcelainBrassSubmarineHullParity();
 testEzTreeAshParity();
 testSpectralDispersiveGlassOpticsParity();
+testSoftbodyJellyParity();
 testTraversableWormholeShapeParity();
 await testGpuCulledFlowerFieldParity();
 await testPhysicalDiffractionGratingParity();

@@ -1,0 +1,29 @@
+{
+  "title": "Softbody Jelly",
+  "description": "A flower-shaped translucent soft body whose fixed-step neo-Hookean mechanics, view-dependent thickness, transmission, refractive shadow, and finite RGB caustics remain coupled while the specimen is dragged and released.",
+  "backend": "WebGPU / TSL",
+  "techniques": [
+    "triangular-lattice tetrahedral cage with two-pass Loop optical shell",
+    "fixed-step XPBD compressible neo-Hookean deformation",
+    "COM, rigid-spin, and internal viscous damping with sleep detection",
+    "dynamic BVH refraction with RGB absorption and bounded internal reflection",
+    "finite photon transport for receiver shadows, contact, and caustics"
+  ],
+  "defaultViewport": { "width": 1440, "height": 900 },
+  "defaultDpr": 1.5,
+  "debugModes": [
+    { "value": "final", "label": "Final specimen" },
+    { "value": "wireframe", "label": "Simulation mesh" },
+    { "value": "shadow", "label": "Refractive shadow" },
+    { "value": "caustics", "label": "RGB caustics" }
+  ],
+  "controls": [
+    "orbit",
+    "drag jelly",
+    "pause",
+    "timeScale",
+    "dpr",
+    "debugMode",
+    "capture"
+  ]
+}

@@ -88,9 +88,10 @@
         "threejs-procedural-materials/hybrid-soil-moss-surface",
         "threejs-procedural-materials/raytraced-diamond",
         "threejs-procedural-materials/spectral-dispersive-glass",
-        "threejs-procedural-materials/physical-diffraction-grating"
+        "threejs-procedural-materials/physical-diffraction-grating",
+        "threejs-procedural-materials/softbody-jelly"
       ],
-      "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels."
+      "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels, transmissive bodies, wavelength-dependent optics, and a deforming softbody whose geometry, thickness, absorption, shadow, and caustic fields share one physical state."
     },
     "threejs-procedural-planets": {
       "classification": "example-required",
