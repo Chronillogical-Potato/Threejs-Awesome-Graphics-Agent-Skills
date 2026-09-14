@@ -1,5 +1,5 @@
 import * as THREE from "three/webgpu";
-import { float, positionWorld, texture } from "three/tsl";
+import { float, positionWorld, texture, uniform } from "three/tsl";
 import {
   SOFTBODY_JELLY_DEFAULTS,
   createSoftbodyJellySystem,
@@ -134,9 +134,7 @@ export default {
       .sub(system.optics.originNode)
       .div(system.optics.spanNode);
     const shadowField = texture(system.optics.shadowTexture, opticalUV);
-    const causticField = texture(system.optics.lightTexture, opticalUV)
-      .rgb
-      .mul(5);
+    const causticField = system.optics.sampleIrradiance();
     const benchTexture = makeBenchTexture();
     const bench = texture(benchTexture, positionWorld.xz.div(0.16).add(0.5)).rgb;
     const benchMaterial = new THREE.MeshStandardNodeMaterial({
@@ -154,7 +152,10 @@ export default {
     const finalBenchColor = bench
       .mul(float(1).sub(shadowField.r.mul(0.63)))
       .mul(float(1).sub(shadowField.g.mul(0.40)));
-    const finalBenchEmission = bench.mul(causticField).mul(0.67);
+    const finalBenchEmission = bench
+      .mul(causticField)
+      .mul(uniform(sun.color))
+      .mul(sun.intensity / Math.PI);
     let previousPaused = false;
 
     function setDebugMode(mode) {
@@ -203,6 +204,10 @@ export default {
           rawDelta,
           camera: viewCamera,
         });
+      },
+      render({ renderer, scene, camera: viewCamera }) {
+        system.updateGPU(renderer);
+        renderer.render(scene, viewCamera);
       },
       metrics() {
         return system.metrics();

@@ -444,9 +444,9 @@ Reviewed:
 - a refitted triangle BVH with ray/box traversal, geometric-normal fallback,
   exact unpolarised Fresnel transmission, view-ray thickness, and bounded
   internal reflection;
-- a `192 × 192` receiver field with `42 × 42` stratified RGB transport samples,
-  three dispersed indices, per-channel Beer-Lambert attenuation, normalised
-  Gaussian splats, contact/shadow buffers, and edge clearing;
+- a `192 × 192` shadow/contact receiver plus an adaptive WebGPU caustic field
+  with a `65 × 65` ray lattice, `32 × 32` cell classifier, packed BVH,
+  finite-power beam reconstruction, and edge-safe atlas sampling;
 - the WebGPU physical jelly material with transmission, dispersion, clearcoat,
   shared optical thickness, and berry/mint/honey extinction presets.
 

@@ -256,13 +256,22 @@ function testSoftbodyJellyParity() {
 
   const optics = new RefractiveLightField(body.surface);
   assert.equal(optics.size, 192, "softbody-jelly receiver resolution");
-  assert.equal(optics.samples, 42, "softbody-jelly transport sample grid");
   assert.equal(optics.minSpan, 0.22, "softbody-jelly receiver minimum span");
   assert.equal(optics.maxSpan, 0.75, "softbody-jelly receiver maximum span");
   assert.equal(
-    optics.photons.length,
-    192 * 192 * 3,
-    "softbody-jelly RGB photon storage",
+    optics.gpu.raysNode.value.array.length,
+    65 * 65 * 5 * 4,
+    "softbody-jelly adaptive caustic ray storage",
+  );
+  assert.equal(
+    optics.gpu.flagsNode.value.array.length,
+    32 * 32,
+    "softbody-jelly adaptive caustic cell storage",
+  );
+  assert.equal(
+    optics.gpu.outputTarget.width,
+    384,
+    "softbody-jelly caustic output resolution",
   );
 
   const normalIncidence = refractRay([0, -1, 0], [0, 1, 0], 1, 1.35);
@@ -280,7 +289,7 @@ function testSoftbodyJellyParity() {
   );
 
   body.surface.geometry.dispose();
-  optics.lightTexture.dispose();
+  optics.gpu.dispose();
   optics.shadowTexture.dispose();
 }
 

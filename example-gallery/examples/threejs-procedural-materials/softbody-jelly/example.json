@@ -7,7 +7,7 @@
     "fixed-step XPBD compressible neo-Hookean deformation",
     "COM, rigid-spin, and internal viscous damping with sleep detection",
     "dynamic BVH refraction with RGB absorption and bounded internal reflection",
-    "finite photon transport for receiver shadows, contact, and caustics"
+    "adaptive WebGPU/TSL caustic transport and receiver reconstruction"
   ],
   "defaultViewport": { "width": 1440, "height": 900 },
   "defaultDpr": 1.5,

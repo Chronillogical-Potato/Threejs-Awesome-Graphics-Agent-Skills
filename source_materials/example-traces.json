@@ -87,7 +87,7 @@
           "fixed-step XPBD compressible neo-Hookean mechanics with coupled deviatoric and hydrostatic constraints, a unilateral determinant barrier, contact, grabbing, and finite-state recovery",
           "centre-of-mass, rigid-spin, and internal damping decomposition with RMS sleep detection, dynamic normals, volume metrics, and kinetic-energy diagnostics",
           "refitted triangle BVH with geometric-normal fallback, exact unpolarised Fresnel refraction, view-ray thickness, bounded internal reflection, and Beer-Lambert absorption",
-          "192 by 192 receiver transport with 42 by 42 stratified RGB samples, normalised Gaussian photon splats, direct shadow/contact buffers, and edge clearing"
+          "192 by 192 direct shadow/contact receiver plus adaptive WebGPU caustics with a 65 by 65 ray lattice, 32 by 32 cell classifier, packed BVH, finite-power beam reconstruction, and edge-safe atlas sampling"
         ],
         "boundary": "reference-extraction",
         "divergences": [
