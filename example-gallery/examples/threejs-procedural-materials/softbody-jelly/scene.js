@@ -60,16 +60,12 @@ function makeBenchTexture() {
   return texture;
 }
 
-function settleThumbnail(system, camera) {
-  const maxSteps = 960;
+function advanceThumbnail(system, camera) {
+  const thumbnailDuration = 1;
   const fixedStep = SOFTBODY_JELLY_DEFAULTS.step;
   system.body.wake();
 
-  for (
-    let step = 0;
-    step < maxSteps && !system.body.sleeping;
-    step += 1
-  ) {
+  for (let step = 0; step < thumbnailDuration / fixedStep; step += 1) {
     system.update({
       delta: fixedStep,
       rawDelta: fixedStep,
@@ -77,7 +73,7 @@ function settleThumbnail(system, camera) {
     });
   }
 
-  // Force one final receiver/thickness refresh after the body reaches sleep.
+  // Force one final receiver/thickness refresh at the captured time.
   system.update({ delta: 0, rawDelta: 1 / 24, camera });
 }
 
@@ -108,7 +104,7 @@ export default {
     maxPolarAngle: Math.PI * 0.47,
   },
 
-  async setup({ scene, camera, controls, canvas }) {
+  async setup({ renderer, scene, camera, controls, canvas }) {
     scene.background = new THREE.Color("#dfe6e8");
     scene.fog = new THREE.FogExp2("#dfe6e8", 0.95);
 
@@ -126,8 +122,11 @@ export default {
       domElement: canvas,
     });
 
-    if (new URLSearchParams(window.location.search).get("galleryThumbnail") === "1") {
-      settleThumbnail(system, camera);
+    const thumbnailMode = new URLSearchParams(window.location.search).get(
+      "galleryThumbnail",
+    ) === "1";
+    if (thumbnailMode) {
+      advanceThumbnail(system, camera);
     }
 
     const opticalUV = positionWorld.xz
@@ -174,6 +173,11 @@ export default {
     }
 
     setDebugMode("final");
+
+    if (thumbnailMode) {
+      system.updateGPU(renderer, true);
+      await renderer.compileAsync(scene, camera);
+    }
 
     function resize({ width, height }) {
       camera.aspect = width / height;
