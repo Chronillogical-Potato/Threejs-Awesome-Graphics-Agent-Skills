@@ -637,6 +637,31 @@
       ]
     },
     {
+      "request": "Build deformable sand whose conservative granular transport, impact grains, anisotropic mineral response, and optical-depth shadows remain coupled.",
+      "routes": [
+        {
+          "skill": "threejs-procedural-materials",
+          "signals": [
+            "deformable granular sand",
+            "mass-coupled grain shading"
+          ]
+        }
+      ]
+    },
+    {
+      "request": "Build a rocky beach simulation where finite-volume shallow-water waves carry wet sand, persistent foam, thin films, and impact spray into a WebGPU coast.",
+      "routes": [
+        {
+          "skill": "threejs-spectral-ocean",
+          "signals": [
+            "finite-volume shallow-water beach waves",
+            "rock-impact spray",
+            "wet sand"
+          ]
+        }
+      ]
+    },
+    {
       "request": "Create physically moving soap bubbles whose colour comes from wavelength-dependent air-film-air interference, with front and rear membranes instead of glass refraction.",
       "routes": [
         {

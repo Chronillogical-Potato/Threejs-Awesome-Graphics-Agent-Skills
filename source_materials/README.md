@@ -46,6 +46,8 @@ input.
 | [scottstts/Pearl-Sea-Park](https://github.com/scottstts/Pearl-Sea-Park) | `888fc57b817514049b5fb33b0a3e115b585de067` | generator-colocated geometry audits for bounds, supports, openings, ride envelopes, sight lines, track continuity, curvature, and world clearance | `$threejs-procedural-geometry` |
 | [scottstts/Friends-Apartment](https://github.com/scottstts/Friends-Apartment) | `337fbb5c1fa48e51b983d35d137513118e7838b9` | polygon-first mesh authoring, profiles, loft/revolve/sweep constructors, solidify/subdivision/bevel/cleanup, smooth-angle normals, mechanical defect audits, fixed-view inspection | `$threejs-procedural-geometry` |
 | [scottstts/Elysium-Mars-Park](https://github.com/scottstts/Elysium-Mars-Park) | `4ccaea9a8c0d5e2057203a7fb38bbf314a75f4a4` | complete geometry-craft contract, Three.js polygon modeling layer, same-mesh coplanar and inter-part clash audit, planted-defect self-tests, semantic and swept-clearance gates | `$threejs-procedural-geometry` |
+| [scottstts/Sandboard](https://github.com/scottstts/Sandboard) | `489cb01e81b11ba575887f7c76760498eb41aaa8` | fixed-step GPU granular transport, mass-carrying impact particles, procedural mineral grains, bed-space lighting, airborne/tree shadows, and HDR glints | `$threejs-procedural-materials` |
+| [iamtechartist/coastal-simulation](https://github.com/iamtechartist/coastal-simulation) | `2e95e1a3e757ca1268247417dee01606e5e3d55c` | positivity-preserving shallow-water beach solver, reconstructed wet-sand and film fields, procedural rocks, TSL water/sand optics, foam, reflected sky, and impact spray | `$threejs-spectral-ocean` |
 
 ### Author-supplied local files
 
@@ -73,6 +75,11 @@ are pinned by exact hashes, and the author explicitly confirmed MIT licensing.
 The softbody-jelly intake was supplied as a local file at project state
 `04856286f29b9b6e0730e798bd943753492278c3`; it has no separate upstream
 revision, is treated as MIT under the project rule, and is pinned by hash.
+The Sandboard intake was reviewed at `489cb01e81b11ba575887f7c76760498eb41aaa8`;
+its copied effect files are GPL-3.0-only and the optional coconut-tree model is
+kept dev-only. The coastal-simulation intake was reviewed at
+`2e95e1a3e757ca1268247417dee01606e5e3d55c`; its copied effect files and binary
+warm-state assets are MIT under the repository license.
 
 | File | SHA-256 | Reviewed areas | Mechanisms distilled into |
 | --- | --- | --- | --- |
@@ -104,6 +111,59 @@ revision, is treated as MIT under the project rule, and is pinned by hash.
 - A camera handoff needs one interpolation owner; stacked transition and follow smoothing creates a visible half-halt.
 - Authored motion should separate analytic travel phases, spring convergence, exact terminal poses, and secondary motion.
 - Rotating-frame docking is stable when axial/radial error, alignment, and spin are solved independently.
+
+### `Sandboard/`
+
+Reviewed:
+
+- the `512²` double-buffered bed, `0.8 m` extent, `0.032 m` depth, and fixed
+  `1/120 s` simulation step;
+- eight-neighbor conservative flux transport with fixed-point exchange,
+  repose thresholds, contact limits, impact indentation, ejection, and mass
+  carried by `16,384` airborne grains;
+- distance-resampled bounded pointer strokes and deterministic fixed-step
+  clock catch-up;
+- procedural anisotropic `3 × 3` Voronoi grain response, filtered mineral
+  edges, direct lighting, glints, optical-depth bed visibility, airborne
+  shadows, and optional tree-shadow projection;
+- reset, water-shadow, postprocess, and mobile quality paths required by the
+  renderer.
+
+Accepted consumption:
+
+- `$threejs-procedural-materials`
+
+The distributed example keeps the solver, input queue, render camera, renderer,
+lighting, shadow, postprocess, and reset modules in the skill. The gallery owns
+the raw WebGPU device, fixed-camera presentation, primary-pointer and keyboard
+drawing input, canvas lifecycle, and optional tree URL. The tree model is a
+dev-only presentation asset; the full GPL-3.0-only text is mirrored in the skill
+asset directory.
+
+### `coastal-simulation/`
+
+Reviewed:
+
+- the `241 × 401` staggered coastal grid, `0.3 m` spacing, procedural shoreline,
+  terrain, fourteen rocks, and obstacle-top contract;
+- positivity-preserving shallow-water fluxes with incoming-wave sponge,
+  transported foam, wetness, thin film, and flow fields;
+- reconstructed surface/material/flow packing and temporal interpolation;
+- TSL sand, rock, water, sky, reflector, depth-guarded refraction,
+  Beer–Lambert transmission, foam, crest lighting, and wet-rock response;
+- deterministic `240`-instance impact spray, optional WebAssembly kernels, and
+  the compressed warm-state header/array layout.
+
+Accepted consumption:
+
+- `$threejs-spectral-ocean`
+
+The distributed example keeps the coastal solver, surface packing, world
+geometry, shading graph, spray, accelerator adapter, and kernel source in the
+skill. The gallery supplies renderer lifecycle, field texture uploads, camera,
+controls, runtime timing, and metrics. The WebAssembly solver kernel and warm
+state are effect-support assets under the skill asset directory. The page
+worker, navigation, inspection panel, and performance UI are not distributed.
 
 ### `ocean_beach/`
 
@@ -1209,12 +1269,12 @@ These sources are paraphrased. Official documentation remains the authority for 
 | `$threejs-camera-direction` | Stellar camera rig/runtime systems; Interstellar scene cameras, pointer look, floating-origin shots, and scene lifecycle |
 | `$threejs-procedural-animation` | Interstellar launch, staging, spin docking, and debris; Stellar frame-rate-independent response and quaternion control |
 | `$threejs-procedural-fields` | Stellar, MyCraft, `ez-tree`, `mecs-tower-defense-example` |
-| `$threejs-procedural-materials` | MyCraft, Stellar, `mecs-tower-defense-example`, `Very Hot Planet` CodePen, `GrassSystemThreeJS`, `diamonds`, `glass_sculpture`, local diffraction grating, PBR references |
+| `$threejs-procedural-materials` | MyCraft, Stellar, `mecs-tower-defense-example`, `Very Hot Planet` CodePen, `GrassSystemThreeJS`, `diamonds`, `glass_sculpture`, local diffraction grating, Sandboard, PBR references |
 | `$threejs-procedural-geometry` | local WebGPU submarine, race-car, motorcycle, and Optimus humanoid HTML studies; ArtInLife, `ez-tree`, `procedural-bank` |
 | `$threejs-procedural-vegetation` | `ez-tree`, `stylized-scene`, `inkwell-webgpu-flowers` |
 | `$threejs-procedural-architecture` | `procedural-bank` |
 | `$threejs-procedural-planets` | Stellar |
-| `$threejs-spectral-ocean` | Pearl Sea Park, `poseidon`, `FFTOCEAN`; directional-spectrum and FFT literature |
+| `$threejs-spectral-ocean` | Pearl Sea Park, `poseidon`, `FFTOCEAN`, coastal-simulation; directional-spectrum, shallow-water, and FFT literature |
 | `$threejs-water-optics` | `threejs-water`, `FFTOCEAN`; GPU Gems and bounded-water literature |
 | `$threejs-atmosphere-aerial-perspective` | `jeantimex/geospatial`, Stellar, `three-geospatial`, atmosphere references |
 | `$threejs-volumetric-clouds` | `jeantimex/geospatial`, `three-geospatial` |

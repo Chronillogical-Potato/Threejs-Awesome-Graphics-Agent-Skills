@@ -21,6 +21,7 @@
         "src/ui.js": "dd6cdd3aea963233c7a63adbd9f23171b7e71436ff36685bc25fec4ff5bd7a54",
         "src/waveField.js": "1b7cb220c3fb28575a4eec99b3a9e92a93357a52d46c38af13e1f8a901454bed"
       },
+      "assets": {
         "sand_base.jpg": "8db20e97254bd88f0795fbe60a914a1849de369705b9bced8cdf33fcc8833780",
         "sand_normal.jpg": "cd6ad4f65d9892fd5d504c720b71669ac5cb2b6464a67c6647eb09c84f69d24a",
         "sand_base_1k.jpg": "4e6bae88042a0194dca0ac45dead906b669b932acfef7c6cd3f79252cd50ca98",
@@ -572,7 +573,6 @@
         "skybox/Box_Back.bmp": "0cc9d6d97d39b0735636456b87a3e2c9671c1d8207cae0daf210293a15b99902"
       }
     },
-      "assets": {
     "pearl-sea-park": {
       "repository": "https://github.com/scottstts/Pearl-Sea-Park",
       "revision": "4fbf1f3df59a97c27ad80113711622cb914ab0c3",
@@ -917,6 +917,58 @@
       "files": {
         "script.js": "339f879d3c56eda4238b009c318ca9b89e9eb3fcb64eb82be8fa41e692f733b3",
         "metadata.json": "95b0dccb09c866128d5aa177a7bbb870d0dcc582b7c324f4fff8a59b953284f6"
+      }
+    },
+    "sandboard": {
+      "repository": "https://github.com/scottstts/Sandboard",
+      "revision": "489cb01e81b11ba575887f7c76760498eb41aaa8",
+      "license": "GPL-3.0-only",
+      "localDirectory": "Sandboard",
+      "files": {
+        "src/config.ts": "d770171ff8a46168c9ca1cea224cc3f1020cc349971cb1f1e0890128e57e8f64",
+        "src/platform/shader.ts": "cbe4ed45aa4f57ae82dadaee5138ccc46751461c76a500034f596e324dca312c",
+        "src/simulation/flux.ts": "caddc2b00792b9518e0f2b308a1a6ecba35bc97f854a6ef485df7a6796ba24dd",
+        "src/simulation/clock.ts": "1e1f97974f4ac76fce2f4d94a70c0775bcca2bea83f247fcbecab367d80a6efd",
+        "src/simulation/shaders.ts": "d735d69a8efb50726f72e4b874d685fc943835d8ede1cc6793e5b1025c6f3509",
+        "src/simulation/wave-reset-shader.ts": "b0459b867b766f31a40e879fdc437f97b51c270c88a2dc6e0488c11b84151056",
+        "src/simulation/solver.ts": "ae0f15965074a41ef50086ea9d18f1f55d368b5b43a3ff041c16c03673e210ef",
+        "src/render/airborne-shadow.ts": "e31f53c2ea0519cfc27fcedf1cad661dd2990a786e3038ac5fe4dcd88c5995ba",
+        "src/render/camera.ts": "457dc6f407002e2ae2d48fa5e61ccddaa6725eb9cb8e21e99ae618f26cbb3c78",
+        "src/render/coconut-shadow.ts": "7c21c0646396ab2c3a8bdb35da2ff4aba9f7e15ef7e9d55a641e431c7ef01bdc",
+        "src/render/lighting.ts": "5b067ffada5a5ca8d392316bb407cfa719553ba37768d7cd9c20ee112c1e41d0",
+        "src/render/postprocess.ts": "8b0b33d1c916c7c701ce9d981d75ebf3d23b1163dea5f9d74723474f584cd185",
+        "src/render/renderer.ts": "4ba15e2ebde9e923dadd783c80c754ca9c8dbb3cd70ad2e2979c56807aa4bb9e",
+        "src/render/shaders.ts": "1b3f099e5791827ffff6070bc85a76ca23f16f9a81cb381481157baad09d064f",
+        "src/render/water-reset.ts": "03e6bb45b0b583c49bd6dcb209ca54858d5a2f398349648f435a4768fe345402",
+        "src/reset/effect.ts": "d2da11a254a75dc0b2f6e77a19a7b77118a5d6169109cf0ea8874c4742c2beeb",
+        "src/reset/viewport.ts": "c8c58a59ef1c5fee85a0829a432b1817c201a1dc9a0aaa282b7e40337d50daeb",
+        "src/reset/wgsl.ts": "f2dd13d82ed235f29a79138b5da66fcb7148bc15199024450a11a657873861b2",
+        "src/input/strokes.ts": "646c0e323c1bf050a4ff6684e034e38c923526a466d486bee278593ab3bb5fa4"
+      },
+      "assets": {
+        "public/scene_assets/coconut_tree.glb": "151967c3b769de83257fd22d737d9fe7fc09e9b722c271f8e62526a520be14c1"
+      }
+    },
+    "coastal-simulation": {
+      "repository": "https://github.com/iamtechartist/coastal-simulation",
+      "revision": "2e95e1a3e757ca1268247417dee01606e5e3d55c",
+      "license": "MIT",
+      "localDirectory": "coastal-simulation",
+      "files": {
+        "src/coast.js": "eeed29437c71321b9bf2fb398cfcb94fd281e112a8f732b71360ee2362aa0771",
+        "src/terrain-grid.js": "b4cc2fd3982478442e4da748b43f958c634542a502fd9359112f8d2945325293",
+        "src/simulation.js": "76eeff17acfd66e46c1db5669e69c6752186da1c745b4a85cc39d4a7f94719e1",
+        "src/surface.js": "ca29cdb8b7ba7f3af8be0166be6437675c6af86144503ca277813b16e8d6f9be",
+        "src/shading.js": "7c330f7afbb7a9fc3384f98305d842bfe934e3c7271937f6692a26d018d67bca",
+        "src/spray.js": "f7c1457d82fdcdfa828270bf38894e29d003cbb967b22c7ef360b8b4374ea3cd",
+        "src/noise.js": "ad8e460d0d71a3183b16571574d372a753028881fcc55856c9cda9c7b0ccea38",
+        "src/world.js": "a2d322b15f11030e222f92158e3fce4ef3483eb7d1631814aeede853fd73b878",
+        "src/solver-accelerator.js": "47ac65939ab3b7fe619eee679db860a7a4cc1620c3871d10b9557851a2e111aa",
+        "src/solver-kernels.ts": "28920f3693edcec2dab000b4975e638bb7d4d5f1956b1b376d79702cf28fd04b"
+      },
+      "assets": {
+        "src/solver-kernels.wasm": "002550d691a5d65b4cf79492959d87f5080fd6eab2ea7b850d2da564ab35f4d2",
+        "initial-state.bin.gz": "2a4048e1c7c29203dd31a4d20a13f4cd5354c7b7ab9985595c122dad35a1245e"
       }
     }
   }

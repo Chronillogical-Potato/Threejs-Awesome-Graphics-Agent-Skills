@@ -1,0 +1,23 @@
+{
+  "title": "Deformable Sand",
+  "description": "A mass-conserving GPU sand bed with fixed-step granular transport, ballistic impact grains, anisotropic mineral shading, horizon lighting, airborne shadows, and reflective glints.",
+  "backend": "Raw WebGPU / WGSL",
+  "techniques": [
+    "512² double-buffered granular heightfield",
+    "eight-neighbor conservative transport",
+    "fixed-point impact and airborne grain exchange",
+    "anisotropic 3×3 mineral grain shading",
+    "bed-space horizon lighting and optical-depth shadows",
+    "HDR mineral glints and filmic composite"
+  ],
+  "defaultViewport": { "width": 1440, "height": 900 },
+  "defaultDpr": 1,
+  "debugModes": [
+    { "value": "final", "label": "Final sand" },
+    { "value": "height", "label": "Bed height" },
+    { "value": "lighting", "label": "Bed lighting" },
+    { "value": "grains", "label": "Grain fields" },
+    { "value": "shadows", "label": "Shadow fields" }
+  ],
+  "controls": ["fixed camera", "primary-pointer draw", "keyboard draw", "pause", "dpr", "capture"]
+}

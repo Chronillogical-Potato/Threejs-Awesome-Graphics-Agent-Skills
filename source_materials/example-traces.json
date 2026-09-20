@@ -1737,6 +1737,95 @@
           "canvas sizing, the device pixel ratio, the animation loop, the millisecond-to-second delta conversion, and the offline error overlay live in the dev gallery shim"
         ]
       }
+    ],
+    "threejs-procedural-materials/deformable-sand": [
+      {
+        "source": "sandboard",
+        "files": [
+          "src/config.ts",
+          "src/platform/shader.ts",
+          "src/simulation/flux.ts",
+          "src/simulation/clock.ts",
+          "src/simulation/shaders.ts",
+          "src/simulation/wave-reset-shader.ts",
+          "src/simulation/solver.ts",
+          "src/render/airborne-shadow.ts",
+          "src/render/camera.ts",
+          "src/render/coconut-shadow.ts",
+          "src/render/lighting.ts",
+          "src/render/postprocess.ts",
+          "src/render/renderer.ts",
+          "src/render/shaders.ts",
+          "src/render/water-reset.ts",
+          "src/reset/effect.ts",
+          "src/reset/viewport.ts",
+          "src/reset/wgsl.ts",
+          "src/input/strokes.ts"
+        ],
+        "mechanisms": [
+          "double-buffered 512 squared GPU heightfield with fixed-step conservative eight-neighbor granular transport",
+          "fixed-point contact exchange and impact evacuation that preserve bed mass while coupling indentation, ejection, and airborne grain mass",
+          "sixteen-thousand mass-carrying particles with bounded contacts, ballistic flight, cached airborne shadowing, and deterministic fixed-step timing",
+          "procedural anisotropic 3 by 3 Voronoi mineral grains with derivative-aware edge filtering, GGX-like response, glints, and HDR accumulation",
+          "bed-space horizon lighting, optical-depth visibility, tree shadow projection, and separate loose-grain and settled-bed shading paths"
+        ],
+        "assets": [
+          {
+            "sourcePath": "public/scene_assets/coconut_tree.glb",
+            "localPath": "example-gallery/examples/threejs-procedural-materials/deformable-sand/assets/coconut_tree.glb"
+          }
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "the reusable example owns the granular solver, impact particles, stroke resampling, heightfield rendering, lighting, shadows, postprocess and reset paths while accepting a gallery-owned WebGPU canvas and lifecycle",
+          "the gallery adapter owns the fixed authored camera, primary-pointer and keyboard drawing gestures, runtime pause and time scaling, resize, metrics, and disposal",
+          "the optional tree-shadow URL is injected by the adapter so the effect stays free of page asset paths; the tree remains a development-only presentation asset",
+          "height, lighting, grain, and shadow diagnostics are gated through the renderer's inspection uniform and do not change the final simulation or calibrated material branch",
+          "the standalone page UI, audio, loading veil, error overlay, and page-owned animation loop are omitted"
+        ]
+      }
+    ],
+    "threejs-spectral-ocean/ocean-beach-waves": [
+      {
+        "source": "coastal-simulation",
+        "files": [
+          "src/coast.js",
+          "src/terrain-grid.js",
+          "src/simulation.js",
+          "src/surface.js",
+          "src/shading.js",
+          "src/spray.js",
+          "src/noise.js",
+          "src/world.js",
+          "src/solver-accelerator.js",
+          "src/solver-kernels.ts"
+        ],
+        "mechanisms": [
+          "procedural rocky beach grid with signed coastal domain, terrain height, obstacle tops, and deterministic superelliptic rocks",
+          "positivity-preserving staggered-grid shallow-water fluxes with incoming-wave sponge, wet sand, thin film, foam, and transported flow state",
+          "temporal free-surface reconstruction that packs depth, wetness, film, foam, and flow channels for interpolated rendering",
+          "TSL sand, rock, water, sky, reflection, refraction, Beer-Lambert absorption, crest-light, and foam material graph sharing one coastal state",
+          "impact-triggered instanced spray with deterministic particle reuse plus optional WebAssembly solver acceleration"
+        ],
+        "assets": [
+          {
+            "sourcePath": "src/solver-kernels.wasm",
+            "localPath": "skills/threejs-spectral-ocean/assets/ocean-beach-waves/solver-kernels.wasm"
+          },
+          {
+            "sourcePath": "initial-state.bin.gz",
+            "localPath": "skills/threejs-spectral-ocean/assets/ocean-beach-waves/initial-state.bin.gz"
+          }
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "the reusable example owns the coastal grid, finite-volume solver, surface packing, TSL materials, world geometry, spray, warm-state loader contract, and optional accelerator while the gallery supplies renderer and scene lifecycle",
+          "the gallery adapter owns the standard orbit and pan camera, terrain-safe camera constraints, fixed-step catch-up, field texture uploads, runtime controls, metrics, and disposal",
+          "the baked warm state and solver binary are distributed as effect-support assets under the skill asset directory; no page-local source path is required",
+          "normal, foam, wetness, and flow diagnostics branch only at the final water/sand material result and leave the final state evolution unchanged",
+          "the standalone page worker, navigation, performance panel, inspection UI, loading veil, and error presentation are omitted"
+        ]
+      }
     ]
   }
 }

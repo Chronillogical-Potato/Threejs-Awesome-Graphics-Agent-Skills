@@ -530,6 +530,65 @@ const sourceTraceManifest = JSON.parse(
   ),
 );
 
+async function loadTypeScriptModule(relativePath) {
+  const source = await readFile(new URL(relativePath, import.meta.url), "utf8");
+  const result = await transform(source, {
+    loader: "ts",
+    format: "esm",
+    platform: "neutral",
+    sourcemap: false,
+  });
+  return import(`data:text/javascript;charset=utf-8,${encodeURIComponent(result.code)}`);
+}
+
+async function testNewExampleContracts() {
+  const sandConfig = await loadTypeScriptModule(
+    "../skills/threejs-procedural-materials/examples/deformable-sand/source/config.ts",
+  );
+  const sandClock = await loadTypeScriptModule(
+    "../skills/threejs-procedural-materials/examples/deformable-sand/source/simulation/clock.ts",
+  );
+  assert.deepEqual(
+    [sandConfig.SAND.resolution, sandConfig.SAND.particles, sandConfig.SAND.maxContacts],
+    [512, 16384, 8],
+    "deformable sand simulation contract",
+  );
+  const clock = new sandClock.FixedClock(sandConfig.SAND.step, sandConfig.SAND.maxSteps);
+  assert.equal(clock.advance(0), 0, "deformable sand clock initialisation");
+  assert.equal(clock.advance(1000 / 120), 1, "deformable sand clock fixed step");
+  assert.equal(clock.advance(1000), 4, "deformable sand clock catch-up cap");
+  assert.ok(clock.droppedSeconds > 0, "deformable sand clock reports dropped time");
+
+  const coastalCoast = await import(
+    new URL(
+      "../skills/threejs-spectral-ocean/examples/ocean-beach-waves/source/coast.js",
+      import.meta.url,
+    ),
+  );
+  const coastalSimulation = await import(
+    new URL(
+      "../skills/threejs-spectral-ocean/examples/ocean-beach-waves/source/simulation.js",
+      import.meta.url,
+    ),
+  );
+  assert.deepEqual(
+    [coastalCoast.GRID.nx, coastalCoast.GRID.nz, coastalCoast.ROCKS.length],
+    [241, 401, 14],
+    "ocean beach coastal grid contract",
+  );
+  assert.ok(Number.isFinite(coastalCoast.terrainHeight(0, -20)), "coastal terrain height");
+  assert.ok(Number.isFinite(coastalCoast.bedHeight(0, -20)), "coastal bed height");
+  const simulation = new coastalSimulation.ShoreSimulation();
+  const before = simulation.metrics();
+  simulation.step(1 / 60);
+  const after = simulation.metrics();
+  assert.equal(after.nonfinite, 0, "ocean beach solver finite-state gate");
+  assert.ok(after.time > before.time, "ocean beach solver advances time");
+  const packet = simulation.pack();
+  assert.equal(packet.surface.length, coastalCoast.GRID.nx * coastalCoast.GRID.nz * 4, "ocean beach packed surface size");
+  assert.equal(packet.flow.length, packet.surface.length, "ocean beach packed flow size");
+}
+
 const volumetricFireImplementation = await readFile(
   new URL(
     "../skills/threejs-procedural-vfx/examples/volumetric-fluid-fire/source/VolumetricFluidFire.ts",
@@ -872,6 +931,8 @@ async function assertMatchesSourceHash({
   assert.equal(actual, expected, `${label}: copied bytes differ from source trace`);
 }
 
+await testNewExampleContracts();
+
 await Promise.all([
   assertMatchesSourceHash({
     source: "rainy-window",
@@ -973,6 +1034,71 @@ await Promise.all([
     sourcePath: "pokemon_card.png",
     copiedPath: "example-gallery/examples/threejs-procedural-materials/physical-diffraction-grating/assets/card-art.png",
     label: "diffraction gallery card art",
+  }),
+  ...[
+    "config.ts",
+    "platform/shader.ts",
+    "simulation/flux.ts",
+    "simulation/clock.ts",
+    "simulation/shaders.ts",
+    "simulation/wave-reset-shader.ts",
+    "simulation/solver.ts",
+    "render/airborne-shadow.ts",
+    "render/lighting.ts",
+    "render/postprocess.ts",
+    "render/water-reset.ts",
+    "reset/effect.ts",
+    "reset/viewport.ts",
+    "reset/wgsl.ts",
+    "input/strokes.ts",
+  ].map((file) =>
+    assertMatchesSourceHash({
+      source: "sandboard",
+      collection: "files",
+      sourcePath: `src/${file}`,
+      copiedPath: `skills/threejs-procedural-materials/examples/deformable-sand/source/${file}`,
+      label: `deformable sand ${file}`,
+    }),
+  ),
+  assertMatchesSourceHash({
+    source: "sandboard",
+    collection: "assets",
+    sourcePath: "public/scene_assets/coconut_tree.glb",
+    copiedPath: "example-gallery/examples/threejs-procedural-materials/deformable-sand/assets/coconut_tree.glb",
+    label: "deformable sand tree asset",
+  }),
+  ...[
+    "coast.js",
+    "terrain-grid.js",
+    "simulation.js",
+    "surface.js",
+    "spray.js",
+    "noise.js",
+    "world.js",
+    "solver-accelerator.js",
+    "solver-kernels.ts",
+  ].map((file) =>
+    assertMatchesSourceHash({
+      source: "coastal-simulation",
+      collection: "files",
+      sourcePath: `src/${file}`,
+      copiedPath: `skills/threejs-spectral-ocean/examples/ocean-beach-waves/source/${file}`,
+      label: `ocean beach waves ${file}`,
+    }),
+  ),
+  assertMatchesSourceHash({
+    source: "coastal-simulation",
+    collection: "assets",
+    sourcePath: "src/solver-kernels.wasm",
+    copiedPath: "skills/threejs-spectral-ocean/assets/ocean-beach-waves/solver-kernels.wasm",
+    label: "ocean beach waves solver kernel",
+  }),
+  assertMatchesSourceHash({
+    source: "coastal-simulation",
+    collection: "assets",
+    sourcePath: "initial-state.bin.gz",
+    copiedPath: "skills/threejs-spectral-ocean/assets/ocean-beach-waves/initial-state.bin.gz",
+    label: "ocean beach waves warm state",
   }),
 ]);
 console.log("Reference example parity checks passed.");

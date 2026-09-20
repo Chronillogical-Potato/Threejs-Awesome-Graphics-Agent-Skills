@@ -1,0 +1,23 @@
+{
+  "title": "Ocean Beach Waves",
+  "description": "A shallow-water coastal solver carries incoming swells through a rocky beach with free-surface reconstruction, wet sand, persistent foam, spray, refraction, and Beer–Lambert water transmission.",
+  "backend": "WebGPU / TSL",
+  "techniques": [
+    "positivity-preserving staggered-grid shallow water",
+    "procedural coastal terrain and superelliptic rocks",
+    "advected foam, wet sand, and thin water film",
+    "temporal free-surface and flow field packing",
+    "depth-guarded refraction and Beer–Lambert absorption",
+    "rock-impact spray and reflected sky radiance"
+  ],
+  "defaultViewport": { "width": 1440, "height": 932 },
+  "defaultDpr": 1,
+  "debugModes": [
+    { "value": "final", "label": "Final coast" },
+    { "value": "normals", "label": "Water normals" },
+    { "value": "foam", "label": "Foam field" },
+    { "value": "wetness", "label": "Wetness field" },
+    { "value": "flow", "label": "Flow slope" }
+  ],
+  "controls": ["orbit", "pan", "pause", "timeScale", "dpr", "capture"]
+}

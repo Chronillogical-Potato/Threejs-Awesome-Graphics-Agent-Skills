@@ -88,9 +88,10 @@
         "threejs-procedural-materials/raytraced-diamond",
         "threejs-procedural-materials/spectral-dispersive-glass",
         "threejs-procedural-materials/physical-diffraction-grating",
-        "threejs-procedural-materials/softbody-jelly"
+        "threejs-procedural-materials/softbody-jelly",
+        "threejs-procedural-materials/deformable-sand"
       ],
-      "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels, transmissive bodies, wavelength-dependent optics, and a deforming softbody whose geometry, thickness, absorption, shadow, and caustic fields share one physical state."
+      "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels, transmissive bodies, wavelength-dependent optics, a deforming softbody whose geometry, thickness, absorption, shadow, and caustic fields share one physical state, and deformable granular sand whose mass, displacement, grain response, glints, and shadows share one simulation state."
     },
     "threejs-procedural-planets": {
       "classification": "example-required",
@@ -163,9 +164,10 @@
       "evidence": [
         "threejs-spectral-ocean/spectral-cascade-ocean",
         "threejs-spectral-ocean/stylized-above-below-ocean",
-        "threejs-spectral-ocean/submerged-snell-ocean"
+        "threejs-spectral-ocean/submerged-snell-ocean",
+        "threejs-spectral-ocean/ocean-beach-waves"
       ],
-      "rationale": "Spectral synthesis, staged FFTs, derivatives, persistent foam, hybrid refraction, exact dielectric Snell/TIR optics with forward-projected structures, and full underwater-medium optics are implementation-critical."
+      "rationale": "Spectral synthesis, staged FFTs, derivatives, persistent foam, hybrid refraction, exact dielectric Snell/TIR optics with forward-projected structures, full underwater-medium optics, and finite-volume coastal waves with wet-sand state and impact spray are implementation-critical."
     },
     "threejs-temporal-surfaces": {
       "classification": "example-required",

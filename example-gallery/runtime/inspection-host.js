@@ -218,10 +218,8 @@ async function frame(now) {
         rawDelta,
         state: runtimeState,
       });
-    } else if (typeof renderer?.renderAsync === "function") {
-      await renderer.renderAsync(scene, camera);
     } else if (renderer) {
-      renderer.render(scene, camera);
+      await renderer.render(scene, camera);
     }
 
     metricElapsed += rawDelta;

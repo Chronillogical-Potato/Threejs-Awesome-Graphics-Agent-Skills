@@ -1,6 +1,6 @@
 ---
 name: threejs-procedural-materials
-description: Author production procedural materials in Three.js. Use for hybrid texture-backed PBR soil and moss with procedural displacement and masks, upward-facing model moss accumulation, atlas filtering, specular AA, planet-space fields, terrain wetness, lava and emissive surfaces, reflective wave-optical diffraction gratings, air-film-air soap bubbles with Airy interference, raytraced diamond and gem refraction with internal reflection and dispersion, image-space glass transmission with spectral dispersion and volume absorption, deforming softbody jelly materials with XPBD mechanics and refractive caustics, per-instance dissolve, authored PBR identities, derivative normals, and custom direct-light shadow modulation.
+description: Author production procedural materials in Three.js. Use for hybrid texture-backed PBR soil and moss with procedural displacement and masks, upward-facing model moss accumulation, atlas filtering, specular AA, planet-space fields, terrain wetness, deformable granular sand with mass-coupled grain shading, lava and emissive surfaces, reflective wave-optical diffraction gratings, air-film-air soap bubbles with Airy interference, raytraced diamond and gem refraction with internal reflection and dispersion, image-space glass transmission with spectral dispersion and volume absorption, deforming softbody jelly materials with XPBD mechanics and refractive caustics, per-instance dissolve, authored PBR identities, derivative normals, and custom direct-light shadow modulation.
 ---
 
 # Procedural Materials
@@ -101,6 +101,12 @@ for a deforming flower-shaped transmissive body whose tetrahedral XPBD state,
 smooth optical shell, view-ray thickness, BVH refraction, absorption, receiver
 shadow, and finite RGB caustic fields remain coupled.
 
+Read the
+[deformable sand implementation](examples/deformable-sand/deformable-sand.js)
+for a fixed-step granular heightfield whose conservative transport, impact
+particles, anisotropic mineral grains, horizon lighting, and optical-depth
+shadows share one mass-carrying state.
+
 Read
 [references/softbody-jelly.md](references/softbody-jelly.md) for the
 softbody coordinate contract, neo-Hookean XPBD split, damping and sleep rules,
@@ -151,6 +157,8 @@ shared moss PBR identity.
 - a deforming transmissive body updates its render shell, optical BVH, and receiver field from different states;
 - a finite caustic receiver lets non-zero data reach its clamped texture edge;
 - a softbody solver uses variable integration steps or an uncoupled rest-stress split that injects energy after damping;
+- granular displacement, airborne grains, settled-bed shading, and shadow fields advance from different simulation clocks;
+- sand grain sparkle is an unfiltered high-frequency lookup that aliases under grazing motion;
 
 ## Routing boundary
 

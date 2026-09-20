@@ -141,6 +141,32 @@ source examples. Its package build output is not copied into skill examples.
 - Reused dev-only model asset:
   - `example-gallery/examples/threejs-precipitation-surfaces/snow-accumulation/assets/old_rusty_car_2.glb`
 
+## scottstts/Sandboard
+
+- Source: https://github.com/scottstts/Sandboard
+- License: GPL-3.0-only
+- Used in: `skills/threejs-procedural-materials/examples/deformable-sand/`
+- Includes adapted fixed-step granular transport, impact grains, procedural
+  mineral shading, bed-space lighting, and shadow mechanisms.
+- The full GPL-3.0 text is included at
+  `skills/threejs-procedural-materials/assets/deformable-sand/GPL-3.0.txt`.
+- Dev-only copied asset:
+  - `example-gallery/examples/threejs-procedural-materials/deformable-sand/assets/coconut_tree.glb`
+
+## iamtechartist/coastal-simulation
+
+- Source: https://github.com/iamtechartist/coastal-simulation
+- Copyright: 2026 Techartist
+- License: MIT
+- Used in: `skills/threejs-spectral-ocean/examples/ocean-beach-waves/`
+- Includes adapted finite-volume coastal solver, reconstructed wet-sand and
+  water fields, procedural beach/rock world, TSL shading, and impact spray.
+- Bundled effect-support assets:
+  - `skills/threejs-spectral-ocean/assets/ocean-beach-waves/solver-kernels.wasm`
+  - `skills/threejs-spectral-ocean/assets/ocean-beach-waves/initial-state.bin.gz`
+- The asset-local MIT notice is included in
+  `skills/threejs-spectral-ocean/assets/ocean-beach-waves/THIRD_PARTY_LICENSES.md`.
+
 ## rocksdanister/rain
 
 - Source: https://github.com/rocksdanister/rain
