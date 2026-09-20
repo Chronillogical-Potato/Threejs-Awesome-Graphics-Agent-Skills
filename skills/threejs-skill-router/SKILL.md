@@ -26,7 +26,7 @@ relevant, give them particular attention.
 | planets, terrain, craters, biome fields, coastlines, spherical detail | `$threejs-procedural-planets` |
 | sky scattering, planetary shells, depth-based aerial perspective | `$threejs-atmosphere-aerial-perspective` |
 | weather-driven raymarched clouds and cloud shadows | `$threejs-volumetric-clouds` |
-| FFT oceans, hybrid FFT/Gerstner clear water, coastal breaker transitions, signed-distance coastlines, shallow-water swash chains, wet sand, stylized above/below ocean optics, submerged Snell windows, total internal reflection, forward-refracted structures, pixel-footprint spectral LOD, aquatic perspective, caustic god rays, spectral cascades, choppy derivatives, Jacobian whitecaps | `$threejs-spectral-ocean` |
+| FFT oceans, coastal breaker transitions, signed-distance coastlines, shallow-water swash chains, wet sand, stylized above/below ocean optics, submerged Snell windows, total internal reflection, forward-refracted structures, pixel-footprint spectral LOD, aquatic perspective, caustic god rays, spectral cascades, choppy derivatives, Jacobian whitecaps | `$threejs-spectral-ocean` |
 | authored analytic waves, bounded heightfield pools, object ripples, differential-area caustics, ray-traced pool volume optics, shared normals, heuristic refraction, fallback absorption, crest foam | `$threejs-water-optics` |
 | falling snow, snow accumulation, model snow caps, wet asphalt puddles, procedural ripple normals, splash flipbooks, rain streaks, shared weather envelopes, surface wetness | `$threejs-precipitation-surfaces` |
 | curved-ray black holes, accretion disks, wormholes and throat transits, null-geodesic integration, lensed celestial spheres and star fields | `$threejs-raymarched-space-effects` |

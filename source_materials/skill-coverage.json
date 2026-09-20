@@ -83,7 +83,6 @@
       "evidence": [
         "threejs-procedural-geometry/sculpted-gallery-frame",
         "threejs-procedural-planets/procedural-planet-surface",
-        "threejs-water-optics/analytic-wave-optics",
         "threejs-procedural-materials/lava-flow-surface",
         "threejs-procedural-materials/hybrid-soil-moss-surface",
         "threejs-procedural-materials/raytraced-diamond",
@@ -163,7 +162,6 @@
       "classification": "example-required",
       "evidence": [
         "threejs-spectral-ocean/spectral-cascade-ocean",
-        "threejs-spectral-ocean/hybrid-clear-water-ocean",
         "threejs-spectral-ocean/stylized-above-below-ocean",
         "threejs-spectral-ocean/submerged-snell-ocean"
       ],
@@ -195,10 +193,9 @@
     "threejs-water-optics": {
       "classification": "example-required",
       "evidence": [
-        "threejs-water-optics/analytic-wave-optics",
         "threejs-water-optics/interactive-pool-volume"
       ],
-      "rationale": "Shared wave displacement/normals and reflection/refraction/absorption coupling require runnable shader evidence."
+      "rationale": "Bounded heightfield displacement, shared simulated normals, pool-volume refraction, absorption, caustics, and interaction coupling require runnable shader evidence."
     }
   }
 }

@@ -38,11 +38,6 @@ for shared geological, climate, water, biome, roughness, and derivative-normal
 causes on a procedural planetary surface.
 
 Read the
-[analytic wave optics](../threejs-water-optics/examples/analytic-wave-optics/water-system.js)
-for coupled reflection, refraction, absorption, filtered microstructure,
-resolved crest response, and their diagnostic channels.
-
-Read the
 [lava flow surface material](examples/lava-flow-surface/lava-surface.js)
 for raymarched procedural height fields whose normals, rock/lava identity,
 emission, glow, embers, fog, and grain are coupled to one material cause stack.

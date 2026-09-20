@@ -1032,57 +1032,6 @@
         ]
       }
     ],
-    "threejs-spectral-ocean/hybrid-clear-water-ocean": [
-      {
-        "source": "ocean-threejs",
-        "files": [
-          "src/Ocean/OceanMaterial.js",
-          "src/Ocean/Gerstner.js",
-          "src/Ocean/Spectra.js",
-          "src/Ocean/FFT.js",
-          "src/Ocean/OceanSimulation.js",
-          "src/Shaders/water.vert.js",
-          "src/Shaders/water.frag.js",
-          "src/config.js"
-        ],
-        "mechanisms": [
-          "deterministic directional spectra and three FFT displacement bands",
-          "long authored Gerstner swell layered over FFT displacement",
-          "FFT derivative and Gerstner analytic normal fusion",
-          "shared analytic sky radiance for visible sky and water reflection",
-          "screen-space seafloor refraction, Beer-Lambert extinction, crest scatter, GGX sun highlights, and foam diagnostics",
-          "animated sand-bed caustic material with optional host-supplied color, normal, roughness, displacement, and AO maps"
-        ],
-        "assets": [
-          {
-            "sourcePath": "public/Ground098_1K-JPG_AmbientOcclusion.jpg",
-            "localPath": "example-gallery/examples/threejs-spectral-ocean/hybrid-clear-water-ocean/assets/sand/Ground098_1K-JPG_AmbientOcclusion.jpg"
-          },
-          {
-            "sourcePath": "public/Ground098_1K-JPG_Color.jpg",
-            "localPath": "example-gallery/examples/threejs-spectral-ocean/hybrid-clear-water-ocean/assets/sand/Ground098_1K-JPG_Color.jpg"
-          },
-          {
-            "sourcePath": "public/Ground098_1K-JPG_Displacement.jpg",
-            "localPath": "example-gallery/examples/threejs-spectral-ocean/hybrid-clear-water-ocean/assets/sand/Ground098_1K-JPG_Displacement.jpg"
-          },
-          {
-            "sourcePath": "public/Ground098_1K-JPG_NormalDX.jpg",
-            "localPath": "example-gallery/examples/threejs-spectral-ocean/hybrid-clear-water-ocean/assets/sand/Ground098_1K-JPG_NormalDX.jpg"
-          },
-          {
-            "sourcePath": "public/Ground098_1K-JPG_Roughness.jpg",
-            "localPath": "example-gallery/examples/threejs-spectral-ocean/hybrid-clear-water-ocean/assets/sand/Ground098_1K-JPG_Roughness.jpg"
-          }
-        ],
-        "boundary": "reference-extraction",
-        "divergences": [
-          "the reviewed FFT spectrum defaults are energy-matched onto the pack's existing spectral-cascade backend",
-          "the water material, sky, foam, refraction, Gerstner swell, and grading paths are copied/adapted into the clear-water ocean variant needed for this pack's inspection gallery",
-          "the dev scene owns the seafloor mesh, sand texture inputs, and render-target prepass used to inspect refraction"
-        ]
-      }
-    ],
     "threejs-spectral-ocean/spectral-cascade-ocean": [
       {
         "source": "poseidon",
@@ -1413,45 +1362,6 @@
           "bounded cloud layers and cascaded cloud shadow maps are coupled into AerialPerspectiveEffect",
           "NormalPass deferred lighting feeds atmosphere-aware cloud and sky composition",
           "temporal reconstruction and native-resolution diagnostics expose the cloud reconstruction path"
-        ]
-      }
-    ],
-    "threejs-water-optics/analytic-wave-optics": [
-      {
-        "source": "interstellar-three",
-        "files": [
-          "src/three/scenes/08MillersPlanetScene.js"
-        ],
-        "mechanisms": [
-          "five authored Gerstner-style components shared exactly by vertex displacement and analytic normal evaluation",
-          "four smaller moving sinusoidal normal bands over the displaced macro normal",
-          "analytic sky reflection with sun disc halo and surface glint",
-          "crest response from resolved normal slope and distance haze over the bounded mesh",
-          "CPU surface-height evaluation from the same wave parameter bundle"
-        ],
-        "boundary": "reference-extraction",
-        "divergences": [
-          "the TSL node material is translated to explicit WebGL2 GLSL for deterministic gallery inspection",
-          "the scene focuses on the ocean surface and omits the approaching tidal wall, astronaut, and narrative objects",
-          "screen-space scene-color refraction is added from the second traced water implementation while preserving the five-wave displacement contract"
-        ]
-      },
-      {
-        "source": "mycraft",
-        "files": [
-          "src/engine/render/water/WaterSurfaceMaterial.ts"
-        ],
-        "mechanisms": [
-          "screen-derivative attenuation for unresolved micro-wave bands",
-          "side-aware air-water Fresnel and heuristic screen-space refraction",
-          "fallback Beer-Lambert path length using four metres of estimated depth",
-          "crest-linked noisy foam and analytic reflection hierarchy"
-        ],
-        "boundary": "reference-extraction",
-        "divergences": [
-          "the inspection example displaces geometry using the five-wave bundle instead of retaining the normal-only surface",
-          "scene-color refraction renders a focused seabed and rock layer without scene-depth rejection",
-          "the six-band normal bundle is represented by three derivative-filtered micro bands over the shared displaced normal"
         ]
       }
     ],

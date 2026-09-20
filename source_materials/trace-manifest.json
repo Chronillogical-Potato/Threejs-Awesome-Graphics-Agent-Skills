@@ -21,7 +21,6 @@
         "src/ui.js": "dd6cdd3aea963233c7a63adbd9f23171b7e71436ff36685bc25fec4ff5bd7a54",
         "src/waveField.js": "1b7cb220c3fb28575a4eec99b3a9e92a93357a52d46c38af13e1f8a901454bed"
       },
-      "assets": {
         "sand_base.jpg": "8db20e97254bd88f0795fbe60a914a1849de369705b9bced8cdf33fcc8833780",
         "sand_normal.jpg": "cd6ad4f65d9892fd5d504c720b71669ac5cb2b6464a67c6647eb09c84f69d24a",
         "sand_base_1k.jpg": "4e6bae88042a0194dca0ac45dead906b669b932acfef7c6cd3f79252cd50ca98",
@@ -340,7 +339,6 @@
         "src/three/scenes/05EnduranceLaunchScene.js": "2ffb516289440493c42b6742814b3acc8f66f43e81bcfead51a29c50db14991f",
         "src/three/scenes/06SaturnApproachScene.js": "fd26f261de0d9b9c4a3a9783f863e632034deddfd7cf8000e29eec572c57d54e",
         "src/three/scenes/07WormholeScene.js": "9e44086f7eee0fcfc6a67e729f49da988f3788bfa08c22317382d622e5cbceb7",
-        "src/three/scenes/08MillersPlanetScene.js": "0b8c160297d69db5b204668357bb18a2286829bd29e9f4be1ea55bf012eac0fe",
         "src/three/scenes/09MannsPlanetScene.js": "cc9b8cc6d91876f3890ef0b7ead6d38b76bea4353012174681966496df50bc5e",
         "src/three/scenes/10SpinDockingScene.js": "63d6bd03083a6caf90110adb99aa379e48faac95780ca033d58fe6eb54b6d47a",
         "src/three/scenes/11GargantuaSlingshotScene.js": "ab7b3d76323061ac8ed7092ab4cf8492a6821b95e5217a08833d083a77973382",
@@ -534,8 +532,7 @@
       "revision": "7fdb3cee3d7d99b42ee47dd659b90a4f6a658074",
       "license": "MIT by project rule",
       "files": {
-        "src/engine/render/BlockMaterial.ts": "c7d91070d6597c5ffd8ae7de90e2703208901a0b64898d1ffe3ee9ef976509af",
-        "src/engine/render/water/WaterSurfaceMaterial.ts": "4b43fbe040b3899fe75c80bd52d4d5c9a606ec995cfe7103b57d4897880e08dc"
+        "src/engine/render/BlockMaterial.ts": "c7d91070d6597c5ffd8ae7de90e2703208901a0b64898d1ffe3ee9ef976509af"
       }
     },
     "mysite-react": {
@@ -575,29 +572,7 @@
         "skybox/Box_Back.bmp": "0cc9d6d97d39b0735636456b87a3e2c9671c1d8207cae0daf210293a15b99902"
       }
     },
-    "ocean-threejs": {
-      "repository": "https://github.com/achrefelouafi/OceanThreejs",
-      "revision": "da18e9254a83a6e990c0077b5d752026f3d5c480",
-      "license": "MIT",
-      "localDirectory": "OceanThreejs",
-      "files": {
-        "src/Ocean/OceanMaterial.js": "62de22d2c044e1cdff55786edd810c88fc13dd0882b3ada9c14cacfe07a427e6",
-        "src/Ocean/Gerstner.js": "367d9f2f2ac5d0468931101db44b2a0e8f6e5a350db64c5c8dbcfbece11fce23",
-        "src/Ocean/Spectra.js": "b3aa7a742a0cbda531446bf5b348d87f5d2a379fccee5f62644988db04f418ae",
-        "src/Ocean/FFT.js": "dbed48715fa31b19e6263759a8db2876fdd502249dbf8e1048bd468cc5f27c5e",
-        "src/Ocean/OceanSimulation.js": "71387c9a77a6a84a3a2f44c85141b5d12258ab0e1091ec3e50f0ab440873267c",
-        "src/Shaders/water.vert.js": "478a37ba7fb842ff8e07a8c5ebe7576db18c8c7a73502401fe80f2e925bc789c",
-        "src/Shaders/water.frag.js": "835ac79b647c554cd3ec2ee3b74bc44e98f63ec5d66575cdf2854e78668b4cd2",
-        "src/config.js": "c0c3bc272c4cbecae81b6987452a74704b633fca0a182ee17a45c9a04c609e59"
-      },
       "assets": {
-        "public/Ground098_1K-JPG_AmbientOcclusion.jpg": "d0317abdbbba34e406ffecdf1095952e3a6d50e7a4cfdc7ce736a717c053608b",
-        "public/Ground098_1K-JPG_Color.jpg": "94e7730596545633540c1d2c50c0d93fb8a4eb720b81da485bd5d986e1476b93",
-        "public/Ground098_1K-JPG_Displacement.jpg": "bea98f786b5a9e799c70b7f5baeeed37412c2decd719675775044cf2e51e6a8d",
-        "public/Ground098_1K-JPG_NormalDX.jpg": "b5d5e5ea4ce619974930f363c5e36b9d38f75713976880d563e6292d7c1f06a5",
-        "public/Ground098_1K-JPG_Roughness.jpg": "ce5e2acedf4b613369a39e7e54eb2b35543647e463b06bec59594fc59361ad85"
-      }
-    },
     "pearl-sea-park": {
       "repository": "https://github.com/scottstts/Pearl-Sea-Park",
       "revision": "4fbf1f3df59a97c27ad80113711622cb914ab0c3",

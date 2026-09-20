@@ -39,9 +39,9 @@ input.
 
 | Project | Reviewed revision | Reviewed areas | Mechanisms distilled into |
 | --- | --- | --- | --- |
-| [scottstts/MyCraft](https://github.com/scottstts/MyCraft) | `7fdb3cee3d7d99b42ee47dd659b90a4f6a658074` | `BlockMaterial.ts`, `WaterSurfaceMaterial.ts`, custom shadow targets, composer and post passes | `$threejs-procedural-materials`, `$threejs-shadow-systems`, `$threejs-image-pipeline`, `$threejs-bloom`, `$threejs-screen-space-ambient-occlusion`; water retained as a bounded/analytic comparison |
+| [scottstts/MyCraft](https://github.com/scottstts/MyCraft) | `7fdb3cee3d7d99b42ee47dd659b90a4f6a658074` | `BlockMaterial.ts`, custom shadow targets, composer and post passes | `$threejs-procedural-materials`, `$threejs-shadow-systems`, `$threejs-image-pipeline`, `$threejs-bloom`, `$threejs-screen-space-ambient-occlusion` |
 | [scottstts/Stellar](https://github.com/scottstts/Stellar) | `ad8062b54ec86312d7c028d46727796eb802c9b2` | planetary field stack, crater/ridge/biome logic, procedural normals, atmosphere shell/post handoff, reentry plasma, dimension-scaled chase/side/orbit camera rigs, body-relative frames, bounded second-order camera response, launch/orbit handoffs, ship orientation control | `$threejs-procedural-planets`, `$threejs-procedural-fields`, `$threejs-atmosphere-aerial-perspective`, `$threejs-procedural-vfx`, `$threejs-camera-direction`, `$threejs-procedural-animation` |
-| [scottstts/Interstellar.three.js](https://github.com/scottstts/Interstellar.three.js) | `0c9c4635f9e0cbcb1598a2af8914c3086f8629a3` | wormhole integration, black-hole lensing/accretion and `noise_deep.png`, analytic ocean waves and normals, scene-owned lenses, pointer look, floating-origin framing, launch kinematics, staging, spin docking, spring convergence, rotating-frame debris | `$threejs-raymarched-space-effects`, `$threejs-water-optics`, `$threejs-camera-direction`, `$threejs-procedural-animation` |
+| [scottstts/Interstellar.three.js](https://github.com/scottstts/Interstellar.three.js) | `0c9c4635f9e0cbcb1598a2af8914c3086f8629a3` | wormhole integration, black-hole lensing/accretion and `noise_deep.png`, scene-owned lenses, pointer look, floating-origin framing, launch kinematics, staging, spin docking, spring convergence, rotating-frame debris | `$threejs-raymarched-space-effects`, `$threejs-camera-direction`, `$threejs-procedural-animation` |
 | [scottstts/mysite_React](https://github.com/scottstts/mysite_React) | `98bb4ad75561aaf7263dbc6c92e2d66268f69f43` | `ArtInLifeGallery.tsx`: sculpted frame/rail geometry, procedural metal texture, selective bloom, instanced chandelier and placeholders, shadow invalidation, adaptive DPR | `$threejs-procedural-geometry`, `$threejs-procedural-materials`, `$threejs-bloom`, `$threejs-visual-validation` |
 | [scottstts/Pearl-Sea-Park](https://github.com/scottstts/Pearl-Sea-Park) | `888fc57b817514049b5fb33b0a3e115b585de067` | generator-colocated geometry audits for bounds, supports, openings, ride envelopes, sight lines, track continuity, curvature, and world clearance | `$threejs-procedural-geometry` |
 | [scottstts/Friends-Apartment](https://github.com/scottstts/Friends-Apartment) | `337fbb5c1fa48e51b983d35d137513118e7838b9` | polygon-first mesh authoring, profiles, loft/revolve/sweep constructors, solidify/subdivision/bevel/cleanup, smooth-angle normals, mechanical defect audits, fixed-view inspection | `$threejs-procedural-geometry` |
@@ -480,7 +480,6 @@ author-supplied read-only neighboring worktree.
 | [owenyuwono/poseidon](https://github.com/owenyuwono/poseidon) | `caddf773c7e2b7c9b00ad232d21cca4f364d5272` | MIT by project rule | copied/adapted spectral-ocean mechanisms where accepted |
 | [gioeledallapozza/FFTOCEAN](https://github.com/gioeledallapozza/FFTOCEAN) | `0fe3a908a86118eab9930e17b0b29df7fcc05b65` | MIT by project rule | copied/adapted stylized ocean shader mechanisms plus foam and sand assets for `$threejs-spectral-ocean` |
 | [jeantimex/threejs-water](https://github.com/jeantimex/threejs-water) | `d5c06864fe22ad31f500af7f21a46aad1c7d3e27` | MIT | copied/adapted water simulation, pool caustics, pool/water/sphere shader mechanisms, and pool tile/cubemap assets for `$threejs-water-optics` |
-| [achrefelouafi/OceanThreejs](https://github.com/achrefelouafi/OceanThreejs) | `da18e9254a83a6e990c0077b5d752026f3d5c480` | MIT | copied/adapted hybrid clear-water ocean mechanisms; dev-only sand texture inputs copied for visual inspection |
 | [dedekpo/stylized-scene](https://github.com/dedekpo/stylized-scene) | `531c5721e3883412d0dde7db1a72732aa3ede155` | MIT | copied/adapted grass shader, blade, wind, path-mask, and noise mechanisms plus attributed effect-owned assets; scene dressing remains dev-only |
 | [sabosugi/Very Hot Planet CodePen](https://codepen.io/sabosugi/pen/RNKpmQj) | `339f879d3c56eda4238b009c318ca9b89e9eb3fc` content-derived capture id from editor init-data on 2026-06-27 | MIT by project rule | copied/adapted procedural lava material mechanisms |
 | [momentchan/r3f-procedural-grass](https://github.com/momentchan/r3f-procedural-grass) | `e441d2bd4eacaa0c913a8b64dfeb69bd0314a7b5`; `packages/r3f-gist` submodule `16bc424b75077a910965c98ea8ce0c5b564b54b1` | MIT; submodule has no observed license and is treated as MIT by project rule | copied/adapted realistic GPU-computed grass implementation for `$threejs-procedural-vegetation` |
@@ -737,9 +736,8 @@ Consumed by:
 - `$threejs-visual-validation`
 
 Poseidon's spectral mechanisms remain copied/adapted into the spectral-ocean
-coverage with trace hashes. MyCraft and Interstellar remain useful for the
-separate analytic/bounded-water skill; they do not define the spectral skill's
-quality bound.
+coverage with trace hashes. They do not define the spectral skill's quality
+bound.
 
 ### `FFTOCEAN`
 
@@ -799,38 +797,6 @@ pool/water/sphere shader implementation, and water-volume assets inside
 `$threejs-water-optics`. The tile and cubemap images are effect inputs for the
 reference optical result, while camera, interaction, and visual inspection
 framing remain in `example-gallery/`.
-
-### `OceanThreejs`
-
-Reviewed:
-
-- WebGL2 Tessendorf FFT with CPU-built deterministic spectra, butterfly
-  texture, ping-pong passes, and packed displacement/derivative outputs;
-- switchable Phillips, Pierson-Moskowitz, and JONSWAP spectra with directional
-  spreading and significant-wave-height normalization;
-- hybrid displacement combining three FFT sampling cascades with long directional
-  Gerstner swell;
-- GGX/Fresnel environment reflection, screen-space seabed refraction,
-  Beer-Lambert extinction, SSS-like crest scatter, glints, procedural sky
-  coupling, horizon edge fade, ACES grading, and Jacobian/curvature foam;
-- explicit quality presets for FFT size, mesh resolution, and ocean extent.
-
-Candidate consumption:
-
-- `$threejs-spectral-ocean`
-- `$threejs-water-optics`
-- `$threejs-image-pipeline`
-- `$threejs-exposure-color-grading`
-
-This source overlaps strongly with the existing spectral-ocean example, but its
-hybrid FFT-plus-Gerstner styling and full shading stack are useful as an
-additional example variant rather than a new skill.
-
-The accepted example keeps the hybrid clear-water material, side-aware
-above/below surface behavior, sand-bed caustic material, and map-driven host
-inputs inside `$threejs-spectral-ocean`. The copied sand texture set is owned by
-the dev gallery so visual inspection can match the reference seabed without
-making those decorative maps part of the skill asset contract.
 
 ### `stylized-scene`
 
@@ -1248,8 +1214,8 @@ These sources are paraphrased. Official documentation remains the authority for 
 | `$threejs-procedural-vegetation` | `ez-tree`, `stylized-scene`, `inkwell-webgpu-flowers` |
 | `$threejs-procedural-architecture` | `procedural-bank` |
 | `$threejs-procedural-planets` | Stellar |
-| `$threejs-spectral-ocean` | Pearl Sea Park, `poseidon`, `OceanThreejs`, `FFTOCEAN`; directional-spectrum and FFT literature |
-| `$threejs-water-optics` | MyCraft and Interstellar.three.js analytic/optical comparisons; `threejs-water`, `FFTOCEAN`; GPU Gems |
+| `$threejs-spectral-ocean` | Pearl Sea Park, `poseidon`, `FFTOCEAN`; directional-spectrum and FFT literature |
+| `$threejs-water-optics` | `threejs-water`, `FFTOCEAN`; GPU Gems and bounded-water literature |
 | `$threejs-atmosphere-aerial-perspective` | `jeantimex/geospatial`, Stellar, `three-geospatial`, atmosphere references |
 | `$threejs-volumetric-clouds` | `jeantimex/geospatial`, `three-geospatial` |
 | `$threejs-raymarched-space-effects` | interstellarThreeJS; local Schwarzschild black-hole HTML |
