@@ -327,7 +327,7 @@ for (const example of discoveredExamples) {
   if (example.techniques.length < 2) {
     errors.push(`${example.id}: metadata must identify at least two techniques`);
   }
-  if (example.debugModes.length < 4) {
+  if (example.diagnosticModes.length < 4) {
     errors.push(
       `${example.id}: visual example must expose final plus at least three diagnostic modes`,
     );
@@ -533,7 +533,7 @@ for (const [skillName, coverage] of Object.entries(skillCoverage.skills ?? {})) 
     if (coverage.classification === "example-required") {
       if (!discoveredExampleIds.has(evidence)) {
         errors.push(`${skillName}: missing required example evidence ${evidence}`);
-      } else if ((discoveredExamplesById.get(evidence)?.debugModes.length ?? 0) < 4) {
+      } else if ((discoveredExamplesById.get(evidence)?.diagnosticModes.length ?? 0) < 4) {
         errors.push(
           `${skillName}: example evidence ${evidence} needs at least three diagnostic modes`,
         );

@@ -19,6 +19,7 @@ const elements = {
   standalone: document.querySelector("#standalone"),
   stage: document.querySelector("#stage"),
   frame: document.querySelector("#example-frame"),
+  toolbar: document.querySelector(".toolbar"),
   frameStatus: document.querySelector("#frame-status"),
   frameMetrics: document.querySelector("#frame-metrics"),
   frameSize: document.querySelector("#frame-size"),
@@ -119,10 +120,13 @@ function updateDebugModes(example) {
   elements.debugMode.replaceChildren();
   if (example.debugModes.length === 0) {
     state.debugMode = "final";
-    elements.debugControl.hidden = true;
+    elements.debugControl.remove();
     return;
   }
 
+  if (!elements.debugControl.isConnected) {
+    elements.toolbar.insertBefore(elements.debugControl, elements.pause);
+  }
   elements.debugControl.hidden = false;
   for (const mode of example.debugModes) {
     const option = document.createElement("option");

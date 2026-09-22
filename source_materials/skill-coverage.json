@@ -89,9 +89,11 @@
         "threejs-procedural-materials/spectral-dispersive-glass",
         "threejs-procedural-materials/physical-diffraction-grating",
         "threejs-procedural-materials/softbody-jelly",
-        "threejs-procedural-materials/deformable-sand"
+        "threejs-procedural-materials/deformable-sand",
+        "threejs-procedural-materials/simulated-cloth",
+        "threejs-procedural-materials/simulated-fur"
       ],
-      "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels, transmissive bodies, wavelength-dependent optics, a deforming softbody whose geometry, thickness, absorption, shadow, and caustic fields share one physical state, and deformable granular sand whose mass, displacement, grain response, glints, and shadows share one simulation state."
+      "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels, transmissive bodies, wavelength-dependent optics, a deforming softbody whose geometry, thickness, absorption, shadow, and caustic fields share one physical state, deformable granular sand whose mass, displacement, grain response, glints, and shadows share one simulation state, woven cloth whose material microstructure accompanies its simulated yarn network, and groomed fur whose visible strand shading and interactive contact share one GPU state."
     },
     "threejs-procedural-planets": {
       "classification": "example-required",

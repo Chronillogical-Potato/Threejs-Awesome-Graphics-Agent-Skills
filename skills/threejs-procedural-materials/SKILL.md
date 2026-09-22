@@ -1,6 +1,6 @@
 ---
 name: threejs-procedural-materials
-description: Author production procedural materials in Three.js. Use for hybrid texture-backed PBR soil and moss with procedural displacement and masks, upward-facing model moss accumulation, atlas filtering, specular AA, planet-space fields, terrain wetness, deformable granular sand with mass-coupled grain shading, lava and emissive surfaces, reflective wave-optical diffraction gratings, air-film-air soap bubbles with Airy interference, raytraced diamond and gem refraction with internal reflection and dispersion, image-space glass transmission with spectral dispersion and volume absorption, deforming softbody jelly materials with XPBD mechanics and refractive caustics, per-instance dissolve, authored PBR identities, derivative normals, and custom direct-light shadow modulation.
+description: Author production procedural materials in Three.js. Use for hybrid texture-backed PBR soil and moss with procedural displacement and masks, upward-facing model moss accumulation, atlas filtering, specular AA, planet-space fields, terrain wetness, deformable granular sand with mass-coupled grain shading, woven cloth with GPU XPBD mechanics and yarn microstructure, simulated fur with interactive grooming and strand shading, lava and emissive surfaces, reflective wave-optical diffraction gratings, air-film-air soap bubbles with Airy interference, raytraced diamond and gem refraction with internal reflection and dispersion, image-space glass transmission with spectral dispersion and volume absorption, deforming softbody jelly materials with XPBD mechanics and refractive caustics, per-instance dissolve, authored PBR identities, derivative normals, and custom direct-light shadow modulation.
 ---
 
 # Procedural Materials
@@ -106,6 +106,20 @@ Read the
 for a fixed-step granular heightfield whose conservative transport, impact
 particles, anisotropic mineral grains, horizon lighting, and optical-depth
 shadows share one mass-carrying state.
+
+Read the
+[simulated cloth implementation](examples/simulated-cloth/simulated-cloth.js)
+for an exact plain-weave linen material coupled to a GPU XPBD sheet with yarn
+stretch, shear locking, bending, rigid contact, self-collision, and pinching.
+The calibrated solver and cloth-map contracts are in
+[references/simulated-cloth-system.md](references/simulated-cloth-system.md).
+
+Read the
+[simulated fur implementation](examples/simulated-fur/simulated-fur.js)
+for groomed GPU strands, tapered ribbon shading, and an articulated hand whose
+capsule contacts comb the strand field. The strand, groom, and interaction
+contracts are in
+[references/simulated-fur-system.md](references/simulated-fur-system.md).
 
 Read
 [references/softbody-jelly.md](references/softbody-jelly.md) for the

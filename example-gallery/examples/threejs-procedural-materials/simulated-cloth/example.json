@@ -1,0 +1,26 @@
+{
+  "title": "Simulated Cloth",
+  "description": "A 96 by 96 linen sheet uses a plain-weave PBR microstructure and a WebGPU XPBD solver for yarn-length constraints, shear locking, bending, self-contact, sphere contact, and pointer pinching.",
+  "backend": "WebGPU compute / MeshPhysicalNodeMaterial",
+  "techniques": [
+    "canvas-generated plain-weave albedo, normal, roughness, and occlusion maps",
+    "graph-coloured warp and weft length constraints with nonlinear shear locking",
+    "XPBD dihedral bending with rigid and spatial-hash self-collision",
+    "GPU position readback for front-face-safe pointer grabbing and pin groups"
+  ],
+  "defaultViewport": { "width": 1440, "height": 900 },
+  "defaultDpr": 1,
+  "diagnosticModes": [
+    { "value": "final", "label": "Final linen" },
+    { "value": "albedo", "label": "Weave albedo" },
+    { "value": "normal", "label": "Yarn normals" },
+    { "value": "roughness", "label": "Roughness" },
+    { "value": "occlusion", "label": "Weave occlusion" }
+  ],
+  "controls": [
+    "grab cloth",
+    "orbit",
+    "pan",
+    "zoom"
+  ]
+}

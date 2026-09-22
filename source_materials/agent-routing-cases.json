@@ -68,6 +68,34 @@
       ]
     },
     {
+      "request": "Simulate a woven linen sheet with yarn-scale PBR maps, XPBD warp and weft constraints, shear locking, bending, self-collision, and direct cloth pinching.",
+      "routes": [
+        {
+          "skill": "threejs-procedural-materials",
+          "signals": [
+            "woven cloth",
+            "GPU XPBD",
+            "plain weave",
+            "cloth pinching"
+          ]
+        }
+      ]
+    },
+    {
+      "request": "Build an interactive groomed fur material with GPU strand simulation, tapered fiber ribbons, articulated hand contacts, petting, scratching, and persistent combing.",
+      "routes": [
+        {
+          "skill": "threejs-procedural-materials",
+          "signals": [
+            "simulated fur",
+            "interactive grooming",
+            "strand shading",
+            "capsule contact"
+          ]
+        }
+      ]
+    },
+    {
       "request": "Emit a sculpted rail sweep with deliberate caps, UV density, normals, and material groups.",
       "routes": [
         {

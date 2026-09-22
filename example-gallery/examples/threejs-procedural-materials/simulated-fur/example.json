@@ -1,0 +1,26 @@
+{
+  "title": "Simulated Fur",
+  "description": "A groomed stylized animal carries 420,032 GPU-simulated fur strands rendered as tapered view-facing ribbons, with hand-driven petting, stillness-based scratching, and fur-memory combing.",
+  "backend": "WebGPU compute / TSL strand shading",
+  "techniques": [
+    "area-weighted surface sampling with analytic character shapes and groom frames",
+    "six-point Verlet strands with inextensible segments and persistent comb memory",
+    "view-facing tapered ribbons with fiber tangent scattering and hand occlusion",
+    "rigged hand capsules coupling contact, friction, petting, and scratch response"
+  ],
+  "defaultViewport": { "width": 1440, "height": 900 },
+  "defaultDpr": 1,
+  "diagnosticModes": [
+    { "value": "final", "label": "Final fur" },
+    { "value": "skin", "label": "Host surface" },
+    { "value": "strands", "label": "Strand field" },
+    { "value": "contact", "label": "Contact proxies" }
+  ],
+  "controls": [
+    "orbit",
+    "pan",
+    "pet",
+    "scratch",
+    "dpr"
+  ]
+}

@@ -99,6 +99,53 @@
         ]
       }
     ],
+    "threejs-procedural-materials/simulated-cloth": [
+      {
+        "source": "author-local-simulated-cloth",
+        "files": [
+          "cloth-webgpu.html"
+        ],
+        "mechanisms": [
+          "96 by 96 indexed linen sheet with a 1.46 metre rest span, areal-mass weighting, direct yarn-length constraints, nonlinear warp/weft shear locking, and colored bending constraints",
+          "four coupled 2048 squared albedo, normal, roughness, and occlusion maps from a 72-yarn plain-weave height field with alternating over-under crowns, slub variation, and hem treatment",
+          "complete WGSL XPBD integration, structural/shear/bend solving, rigid sphere and cove contact, final-substep spatial-hash point-triangle and edge-edge self-collision, and dynamic render-frame packing",
+          "async GPU-position readback picking, indexed triangle intersection, nearest-vertex pin selection, local pin neighborhood, camera-forward drag plane, and release/reset behavior",
+          "final material plus albedo, normal, roughness, occlusion, and solver-wireframe diagnostics"
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "the effect modules keep the complete weave generation, physical cloth material, constraint topology, GPU state, WGSL pipelines, simulation order, picking, pin groups, and map diagnostics; they accept an initialized WebGPU renderer, scene, and camera",
+          "the gallery owns the rigid stone, cove mesh, environment bake, lights, bounded orbit/pan/zoom camera, input listeners, and metadata; text overlays and keyboard controls are removed",
+          "the standalone page structure and renderer startup are omitted; the gallery retains cloth grabbing, empty-space orbit, pan, and zoom while pause remains host-driven",
+          "the four generated material maps and cloth-specific GPU solver kernels are retained in the effect modules without replacing their physical or shading mechanisms",
+          "the gallery adapter clamps its camera target and orbit limits to keep the view above the cove and supports only one active pointer gesture"
+        ]
+      }
+    ],
+    "threejs-procedural-materials/simulated-fur": [
+      {
+        "source": "author-local-simulated-fur",
+        "files": [
+          "fur.html"
+        ],
+        "mechanisms": [
+          "analytic earred head, body, paws, and tail surfaces with Jacobian-weighted root distribution, part-overlap culling, four-channel color masks, and region-specific groom directions",
+          "420032 six-point GPU strands using damped Verlet motion, inextensible segment projection, wind, root-to-tip groom stiffness, skin/floor clearance, and persistent per-strand comb memory",
+          "camera-facing tapered ribbon geometry with custom tangent-oriented diffuse/specular/transmission shading and shadow positions derived from the simulated strand points",
+          "articulated palm, thumb, fingers, nails, forearm, and sleeve driving broad-phase and capsule hand contacts, friction, scratch timing, and fur-memory combing",
+          "animated face response, fixed coat colors, and host-surface, strand-only, and contact-proxy inspection paths"
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "the reusable effect contains the complete character shapes and root/groom functions, strand buffers and TSL compute, custom ribbon material, face and hand rigs, pointer hit methods, fixed coat uniforms, and disposal while accepting renderer, scene, camera, controls, and an optional environment texture",
+          "the gallery owns the room PMREM, direct lights, seamless cove, braided rug, yarn props, camera, pointer capture, pan/orbit binding, and scene metadata",
+          "text overlays and palette-selection UI are omitted; the scene retains hand interaction through effect methods and the direct pointer binding",
+          "the contact inspection mode adds translucent wireframe treatment to the otherwise invisible analytic proxies; final mode keeps those picking proxies hidden",
+          "the adapter adds bounded orbit/pan and scene-safe camera limits, while the GPU strand state and the interaction thresholds remain unchanged",
+          "the standalone renderer setup, loading veil, and page-level layout are omitted"
+        ]
+      }
+    ],
     "threejs-procedural-vegetation/gpu-culled-flower-field": [
       {
         "source": "inkwell-webgpu-flowers",

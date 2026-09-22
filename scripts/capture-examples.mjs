@@ -80,11 +80,11 @@ try {
   const page = await browser.newPage();
 
   for (const example of examples) {
-    const debugMode = example.debugModes.some(
+    const debugMode = example.diagnosticModes.some(
       (mode) => mode.value === options.debugMode,
     )
       ? options.debugMode
-      : example.debugModes[0]?.value ?? "final";
+      : example.diagnosticModes[0]?.value ?? "final";
     const target = new URL(example.entry, url);
     target.searchParams.set("galleryPaused", "1");
     target.searchParams.set("galleryDpr", String(example.defaultDpr));

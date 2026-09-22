@@ -130,6 +130,7 @@ async function loadExample(projectRoot, candidate, origin) {
       ? Math.min(3, Math.max(0.5, metadata.defaultDpr))
       : 1,
     debugModes: normalizeDebugModes(metadata.debugModes),
+    diagnosticModes: normalizeDebugModes(metadata.diagnosticModes ?? metadata.debugModes),
     controls: Array.isArray(metadata.controls)
       ? metadata.controls.filter((value) => typeof value === "string")
       : [],

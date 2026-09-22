@@ -107,6 +107,22 @@
         "jelly-webgpu.html": "19c29c05859b3ed65fbd4e583e217deaf7b87546132af5723ec2c5599f259513"
       }
     },
+    "author-local-simulated-cloth": {
+      "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+      "revision": "9b86b8cb145e2f2768e75ab7c4bffe3f47ef8b01",
+      "license": "MIT by project rule",
+      "files": {
+        "cloth-webgpu.html": "e1f7d7043aa931ccbedc455f6c07e3eed13388c055658a6728b97d867257200a"
+      }
+    },
+    "author-local-simulated-fur": {
+      "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+      "revision": "9b86b8cb145e2f2768e75ab7c4bffe3f47ef8b01",
+      "license": "MIT by project rule",
+      "files": {
+        "fur.html": "0f306797a0f054f69fef2d5bf7899c667fd8d25e6f4af4717acaf21100a18983"
+      }
+    },
     "author-local-glass-sculpture": {
       "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
       "revision": "05e02fe402ce2e48d3bc1fc6807b92cbd24f727f",

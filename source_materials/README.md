@@ -75,6 +75,10 @@ are pinned by exact hashes, and the author explicitly confirmed MIT licensing.
 The softbody-jelly intake was supplied as a local file at project state
 `04856286f29b9b6e0730e798bd943753492278c3`; it has no separate upstream
 revision, is treated as MIT under the project rule, and is pinned by hash.
+The simulated-cloth and simulated-fur intakes were supplied as local files at
+project state `9b86b8cb145e2f2768e75ab7c4bffe3f47ef8b01`; neither has a separate
+upstream revision, both are treated as MIT under the project rule, and both
+files are pinned by hash.
 The Sandboard intake was reviewed at `489cb01e81b11ba575887f7c76760498eb41aaa8`;
 its copied effect files are GPL-3.0-only and the optional coconut-tree model is
 kept dev-only. The coastal-simulation intake was reviewed at
@@ -97,6 +101,38 @@ warm-state assets are MIT under the repository license.
 | `source_materials/diffraction_grating/diffraction_grating.html` | `80eb43dfd45dfd28c16324cd233db2c6737963d8756d0ac11bda288352948470` | layered reflective diffraction card: pure TSL `Fn`/`If`/`Loop` optical graph, procedural groove masks, analytic spectral conversion, phase-grating order efficiency, coherence/azimuth broadening, finite-emitter integration, and additive HDR optical composition | `$threejs-procedural-materials`; the whole diffraction material system is distributed, while the printed card artwork is dev-only | 
 | `source_materials/optimus.html` | `ccecce42bfd568c8b44753231f584f1c32ae4b25edeeec080a0b72fe51b0d8ee` | complete procedural humanoid geometry and material system: polygon operations, CSG difference, bevels, lofts, pillow panels, semantic body assembly, procedural PBR materials, and deterministic topology statistics | `$threejs-procedural-geometry`; the complete geometry and material implementation is distributed, while the studio, camera, controls, and runtime remain in the dev gallery shim |
 | `source_materials/jelly-webgpu.html` | `19c29c05859b3ed65fbd4e583e217deaf7b87546132af5723ec2c5599f259513` | single-file WebGPU/TSL softbody study: triangular-lattice flower cage, two-pass Loop shell, fixed-step XPBD neo-Hookean mechanics, dynamic BVH refraction, RGB absorption, finite receiver shadows and caustics, and physical transmission material | `$threejs-procedural-materials`; the reusable softbody/optics/material system is distributed, while renderer, camera, floor, light, controls, and page presentation remain in the dev gallery shim |
+| `source_materials/cloth-webgpu.html` | `e1f7d7043aa931ccbedc455f6c07e3eed13388c055658a6728b97d867257200a` | single-file WebGPU linen study: 96 × 96 GPU XPBD sheet, 72-yarn plain weave, four generated PBR maps, graph-colored yarn constraints, nonlinear shear locking, bending, rigid and self-collision, triangle picking and local pin groups | `$threejs-procedural-materials`; cloth generation, GPU solver, interaction methods, and map diagnostics are in the effect modules; stone, cove, studio, bounded camera, and input binding are in the gallery shim |
+| `source_materials/fur.html` | `0f306797a0f054f69fef2d5bf7899c667fd8d25e6f4af4717acaf21100a18983` | single-file WebGPU/TSL fur study: analytic character surfaces, 420,032 six-point GPU strands, root/groom sampling, inextensible Verlet compute, tapered ribbon shading, articulated hand contacts, pet/scratch timing, and per-strand comb memory | `$threejs-procedural-materials`; character, strands, hand, and interaction response are in the effect modules; room, lighting, set dressing, camera, and pointer binding are in the gallery shim; palette selection is omitted |
+
+### `cloth-webgpu.html` and `fur.html`
+
+Reviewed:
+
+- the cloth rest grid, area-mass calculation, full WGSL integration and
+  constraint kernels, spatial-hash self-contact, sphere/cove collision, and
+  asynchronous pin picking;
+- the 72-yarn alternating plain weave and its generated albedo, normal,
+  roughness, and AO channels;
+- the fur head/body/paw/tail analytic surfaces, Jacobian area estimates, root
+  rejection, grooming fields, and per-strand pattern channels;
+- the six-point GPU strand solver, segment-length projection, comb memory,
+  custom tapered-ribbon shader, fur shadow positions, and articulated hand
+  capsule contacts;
+- pet, hover, scratch, and diagnostic interactions.
+
+Accepted consumption:
+
+- `$threejs-procedural-materials`
+
+The cloth effect modules own the complete material-map generator, sheet mesh,
+WGSL solver, GPU buffers, simulation order, picking, pin state, reset, pause,
+and channel diagnostics. The fur effect modules own the character geometry and
+root samplers, all strand data and compute, ribbon material, visible hand rig,
+contact capsules, interaction state, fixed coat colors, and cleanup. The gallery
+adapters own renderer and scene setup, rigid or room presentation, cameras,
+lights, stage geometry, and event binding. Gallery text overlays and palette
+selection are omitted; contact diagnostics can still render a translucent
+wireframe view of the otherwise hidden picking proxies.
 
 ### Local-project findings retained
 
@@ -1269,7 +1305,7 @@ These sources are paraphrased. Official documentation remains the authority for 
 | `$threejs-camera-direction` | Stellar camera rig/runtime systems; Interstellar scene cameras, pointer look, floating-origin shots, and scene lifecycle |
 | `$threejs-procedural-animation` | Interstellar launch, staging, spin docking, and debris; Stellar frame-rate-independent response and quaternion control |
 | `$threejs-procedural-fields` | Stellar, MyCraft, `ez-tree`, `mecs-tower-defense-example` |
-| `$threejs-procedural-materials` | MyCraft, Stellar, `mecs-tower-defense-example`, `Very Hot Planet` CodePen, `GrassSystemThreeJS`, `diamonds`, `glass_sculpture`, local diffraction grating, Sandboard, PBR references |
+| `$threejs-procedural-materials` | MyCraft, Stellar, `mecs-tower-defense-example`, `Very Hot Planet` CodePen, `GrassSystemThreeJS`, `diamonds`, `glass_sculpture`, local diffraction grating, Sandboard, `cloth-webgpu.html`, `fur.html`, PBR references |
 | `$threejs-procedural-geometry` | local WebGPU submarine, race-car, motorcycle, and Optimus humanoid HTML studies; ArtInLife, `ez-tree`, `procedural-bank` |
 | `$threejs-procedural-vegetation` | `ez-tree`, `stylized-scene`, `inkwell-webgpu-flowers` |
 | `$threejs-procedural-architecture` | `procedural-bank` |
