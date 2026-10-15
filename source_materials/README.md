@@ -1330,3 +1330,42 @@ These sources are paraphrased. Official documentation remains the authority for 
 - It does not provide a general game-engine, ECS, physics, UI, audio, or gameplay curriculum.
 - External assets are relevant only when they support an authored procedural composition.
 - WebGL, WebGPU, GLSL, and TSL syntax remain version-sensitive implementation surfaces. Skills specify the mechanism and invariants; agents must inspect the target renderer before choosing exact APIs.
+
+## Photoreal water and tearable denim intake
+
+- Water: author-supplied `photoreal_water.html`, SHA-256
+  `3d410a0cddd9344e95935e238e956cc14a5ff53d147e94fb8a196399025543ec`, recorded against
+  https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills at
+  `d1cb23dcce6ea8ee4a60f6159daeb79d4b511dba`. MIT by the embedded declaration
+  and project rule. Consumed by `$threejs-water-optics` as `photoreal-water`.
+- Denim: exact local Git clone, including source, assets, documentation, tests,
+  tools and build configuration, from https://github.com/scottstts/Break-That-Denim at
+  `3d25411c2c9d32bbc1d0dc1328822b1b4019639a`, under `fabricTear-repository/`.
+  GPL-3.0-only. The clone retains the binary `public/drape.bin` unchanged;
+  dependencies and build output are not needed.
+  Consumed by `$threejs-procedural-materials` as `simulated-tearable-denim`.
+
+The water effect retains the spectrum, ripples, three-channel caustics, bed,
+medium, sky radiance, glints, glare and final treatment. Its embedded pebble
+JPEG is serialized without re-encoding in a skill-local asset module. The
+denim effect retains implicit mechanics, wear/failure, gripping, connectivity,
+detached pieces, filtered twill, loose yarns, fibres and cloth shadows. The
+stage, mount and floor passes/assets and audio playback are excluded. Plane
+contact stays disabled, with inactive ABI slots left in place. The drape
+module decodes the exact binary payload and keeps its version/hash validation.
+
+The trace manifest distinguishes serialized module hashes from the decoded
+binary hash. Gallery adapters own device/context, camera, input, scheduling,
+and UI. Neither skill example depends on the intake directories. Visual
+inspection is delegated to the author for this change; automated checks do
+not claim visual parity.
+
+Nonvisual extraction audit: all 20 water shader templates are identical to
+the supplied HTML. Fifty-two retained denim modules preserve their arithmetic
+after import-path and comment normalization; the renderer, disabled plane
+contact entry point, telemetry constants, diagnostics and orchestration have
+the explicit adaptations listed in example-traces.json. Headless WebGPU checks
+compiled 29 WGSL modules, encoded all four output modes, caused actual yarn
+failure by dragging, and passed picking, release, reset and no-floor checks.
+The complete package tests and freshness check pass, and the package dry run
+includes 67 new skill files with no gallery/intake files. Version stays 0.11.0.

@@ -1,0 +1,41 @@
+{
+  "title": "Photoreal Water",
+  "description": "Shallow water with gravity-capillary FFT slopes, local touch ripples, dispersive refracted caustics, a textured bed, volume extinction and aperture diffraction glare.",
+  "backend": "WebGL2 / GLSL",
+  "techniques": [
+    "gravity-capillary FFT",
+    "RGB differential-area caustics",
+    "refracted seabed optics",
+    "FFT aperture glare"
+  ],
+  "defaultViewport": "responsive",
+  "defaultDpr": 1,
+  "debugModes": [
+    {
+      "value": "final",
+      "label": "final"
+    },
+    {
+      "value": "caustics",
+      "label": "caustics"
+    },
+    {
+      "value": "no-post",
+      "label": "no post"
+    },
+    {
+      "value": "glare",
+      "label": "glare"
+    }
+  ],
+  "controls": [
+    "orbit",
+    "pan",
+    "tap",
+    "pause",
+    "timeScale",
+    "dpr",
+    "debugMode",
+    "capture"
+  ]
+}

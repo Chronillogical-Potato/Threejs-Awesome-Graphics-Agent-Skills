@@ -1,0 +1,42 @@
+{
+  "title": "Simulated Tearable Denim",
+  "description": "Interactive worn 3/1 twill denim with implicit yarn mechanics, material loss, load-bearing bridging threads, detached pieces, reconstructed fibres and filtered weave shading.",
+  "backend": "WebGPU / WGSL",
+  "techniques": [
+    "implicit multigrid PCG",
+    "wear-driven yarn failure",
+    "material connectivity",
+    "loose yarns and edge fibres"
+  ],
+  "defaultViewport": "responsive",
+  "defaultDpr": 1,
+  "debugModes": [
+    {
+      "value": "final",
+      "label": "final"
+    },
+    {
+      "value": "normals",
+      "label": "normals"
+    },
+    {
+      "value": "wear",
+      "label": "wear"
+    },
+    {
+      "value": "presence",
+      "label": "presence"
+    }
+  ],
+  "controls": [
+    "orbit",
+    "pan",
+    "grip",
+    "reset",
+    "pause",
+    "timeScale",
+    "dpr",
+    "debugMode",
+    "capture"
+  ]
+}

@@ -713,6 +713,33 @@
           ]
         }
       ]
+    },
+    {
+      "request": "Render photoreal shallow water above a pebble bed with gravity-capillary FFT waves, dispersive RGB caustics and aperture diffraction glare.",
+      "routes": [
+        {
+          "skill": "threejs-water-optics",
+          "signals": [
+            "photoreal shallow water",
+            "gravity-capillary FFT",
+            "dispersive caustics",
+            "diffraction glare"
+          ]
+        }
+      ]
+    },
+    {
+      "request": "Simulate tearable denim with an implicit yarn solve, worn warp floats, pale bridging weft, detached pieces and frayed fibres.",
+      "routes": [
+        {
+          "skill": "threejs-procedural-materials",
+          "signals": [
+            "simulated tearable denim",
+            "implicit yarn mechanics",
+            "frayed fibres"
+          ]
+        }
+      ]
     }
   ],
   "boundaries": [

@@ -236,3 +236,24 @@ source examples. Its package build output is not copied into skill examples.
 
 Additional bundled asset folders may include local `THIRD_PARTY_LICENSES.md`
 files with asset-specific notices.
+
+## Photoreal shallow-water implementation
+
+- Source: author-supplied `photoreal_water.html` (Clearwater).
+- Copyright: Aurélien / Lumaris.
+- License: MIT under the supplied declaration and project rule.
+- Used in: `skills/threejs-water-optics/examples/photoreal-water/`.
+- Includes the FFT spectrum, ripples, caustics, optical shader, diffraction and
+  display passes, and the embedded pebble JPEG as a lossless data URL module.
+
+## scottstts/Break-That-Denim
+
+- Source: https://github.com/scottstts/Break-That-Denim
+- License: GPL-3.0-only.
+- Used in: `skills/threejs-procedural-materials/examples/simulated-tearable-denim/`.
+- Includes the yarn mechanics, gripping, topology and denim rendering modules.
+- Losslessly encoded effect asset:
+  `skills/threejs-procedural-materials/assets/simulated-tearable-denim/settled-drape.js`.
+- The complete GPL text is included beside the asset and in
+  `source_materials/GPL-3.0.txt`.
+- Stage, floor assets, mount geometry and playback audio are not distributed.

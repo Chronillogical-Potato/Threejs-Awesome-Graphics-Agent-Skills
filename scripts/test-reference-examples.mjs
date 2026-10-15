@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
-import { transform } from "esbuild";
+import { readFile, readdir } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { build, transform } from "esbuild";
 import { Box3 } from "three";
 import { ashMedium } from "../skills/threejs-procedural-vegetation/examples/structured-ash-growth/ash-preset.js";
 import { compileAshTree } from "../skills/threejs-procedural-vegetation/examples/structured-ash-growth/tree-system.js";
@@ -1101,4 +1103,126 @@ await Promise.all([
     label: "ocean beach waves warm state",
   }),
 ]);
+async function testWaterAndDenimContracts() {
+  const root = fileURLToPath(new URL("../", import.meta.url));
+  const denimRoot = path.join(root, "skills/threejs-procedural-materials/examples/simulated-tearable-denim");
+  const waterPath = path.join(root, "skills/threejs-water-optics/examples/photoreal-water/photoreal-water.js");
+  const raw = {
+    name: "wgsl-text",
+    setup(builder) {
+      builder.onResolve({ filter: /\?raw$/ }, args => ({
+        path: path.resolve(args.resolveDir, args.path.slice(0, -4)), namespace: "wgsl",
+      }));
+      builder.onLoad({ filter: /.*/, namespace: "wgsl" }, async args => ({
+        contents: `export default ${JSON.stringify(await readFile(args.path, "utf8"))};`, loader: "js",
+      }));
+    },
+  };
+  async function bundle(entry) {
+    const result = await build({ entryPoints: [entry], bundle: true, write: false, format: "esm", platform: "node", plugins: [raw], logLevel: "silent" });
+    return result.outputFiles[0].text;
+  }
+  async function importText(code) {
+    return import(`data:text/javascript;base64,${Buffer.from(code).toString("base64")}`);
+  }
+
+  const fabric = await importText(await bundle(path.join(denimRoot, "source/simulation/fabric-config.ts")));
+  const scene = fabric.compileScene(fabric.defaultSceneSpecs());
+  assert.equal(scene.nodeCount, 20930);
+  assert.deepEqual(scene.layers.map(layer => [layer.nx, layer.ny]), [[182, 115]]);
+  assert.equal(fabric.sceneHash(scene), 4202117243, "mechanics/initial-state contract");
+  assert.equal(scene.fieldDamage.length, 2260440);
+  assert.equal(scene.fieldDamage.filter(value => value === 255).length, 2619, "initial absent yarns");
+  assert.ok(Math.abs(scene.mass.reduce((a, b) => a + b, 0) - 0.0808333343999998) < 1e-12);
+
+  const { settledDenimDrape } = await import(path.join(root, "skills/threejs-procedural-materials/assets/simulated-tearable-denim/settled-drape.js"));
+  const drape = settledDenimDrape();
+  assert.deepEqual(Array.from(new Uint32Array(drape, 0, 4)), [0x50415244, 1, 20930, 4202117243]);
+  assert.equal(drape.byteLength, 16 + scene.nodeCount * 16);
+  assert.equal(createHash("sha256").update(new Uint8Array(drape)).digest("hex"), "f19a848ed17dca0a6ae2aa3b70e45331c36d9439cd6b00caca094adc2d5ce9bb");
+  const positions = new Float32Array(drape, 16);
+  assert.ok(positions.every(Number.isFinite));
+
+  const { pebbleTextureURL } = await import(path.join(root, "skills/threejs-water-optics/assets/photoreal-water/pebbles.js"));
+  const jpeg = Buffer.from(pebbleTextureURL.split(",")[1], "base64");
+  assert.equal(jpeg.readUInt16BE(0), 0xffd8);
+  assert.equal(jpeg.readUInt16BE(jpeg.length - 2), 0xffd9);
+  assert.equal(createHash("sha256").update(jpeg).digest("hex"), "4b0433540958e448f638d64941222ac3172281950819f7559487457944fbc254");
+
+  const water = await readFile(waterPath, "utf8");
+  await bundle(waterPath);
+  assert.ok(!/document\.|requestAnimationFrame|innerWidth|innerHeight/.test(water), "water has no page runtime");
+  assert.match(water, /const N = 256, LOGN = 8/);
+  assert.match(water, /const IORS = \[1\.3315, 1\.3335, 1\.3365\]/);
+  assert.match(water, /const TARGET_SLOPE = 0\.078/);
+  assert.match(water, /const float SC = 0\.41, WB = 0\.10/);
+
+  // Exercise the public lifecycle without a browser or GPU. Shader compilation
+  // is stubbed; executing the passes still detects missing JavaScript bindings.
+  const previousImage = globalThis.Image;
+  globalThis.Image = class {
+    set src(value) { queueMicrotask(() => this.onload()); }
+  };
+  try {
+    const { createPhotorealWater } = await import(waterPath);
+    for (const glare of [false, true]) {
+      const constants = new Map();
+      const gl = new Proxy({ canvas: { width: 1, height: 1 } }, {
+        get(target, key) {
+          if (key in target) return target[key];
+          if (/^[A-Z][A-Z_0-9]*$/.test(key)) {
+            if (!constants.has(key)) constants.set(key, constants.size + 1);
+            return constants.get(key);
+          }
+          if (key === "getExtension") return () => ({});
+          if (key === "getParameter") return () => 16;
+          if (key === "getShaderParameter") return () => true;
+          if (key === "getProgramParameter") return (_, parameter) => parameter === gl.ACTIVE_UNIFORMS ? 0 : true;
+          if (key === "checkFramebufferStatus") return () => gl.FRAMEBUFFER_COMPLETE;
+          if (key === "uniform1f") return (_, value) => assert.ok(Number.isFinite(value), "finite water uniform");
+          if (key.startsWith("create")) return () => ({});
+          return () => {};
+        },
+      });
+      const effect = await createPhotorealWater(gl, { glare });
+      try {
+        effect.setSize(32, 18);
+        const basis = { pos: [0, 1.55, 0], f: [0, -Math.sin(0.72), -Math.cos(0.72)], r: [1, 0, 0], u: [0, Math.cos(0.72), -Math.sin(0.72)] };
+        for (const mode of ["final", "caustics", "no-post", "glare"]) {
+          effect.setDebugMode(mode);
+          effect.render(0, basis, [0, 1, 0]);
+        }
+        effect.addDrop(0, -1);
+        effect.render(1 / 60, basis, [0, 1, 0], false);
+      } finally {
+        effect.dispose();
+      }
+    }
+  } finally {
+    if (previousImage === undefined) delete globalThis.Image;
+    else globalThis.Image = previousImage;
+  }
+  const implementation = await bundle(path.join(denimRoot, "simulated-tearable-denim.js"));
+  assert.ok(!implementation.includes("floor.base"));
+  assert.ok(!implementation.includes("vsMount"));
+  assert.ok(!implementation.includes("creature"));
+  assert.ok(!implementation.includes("AudioContext"));
+
+  async function allFiles(directory) {
+    const files = [];
+    for (const entry of await readdir(directory, { withFileTypes: true })) {
+      const file = path.join(directory, entry.name);
+      if (entry.isDirectory()) files.push(...await allFiles(file));
+      else files.push(file);
+    }
+    return files;
+  }
+  for (const file of await allFiles(path.join(denimRoot, "source"))) {
+    const text = await readFile(file, "utf8");
+    assert.ok(!/source_materials|\/Users\/|Break-That-Denim/.test(text), `${file}: self-contained effect`);
+  }
+
+}
+
+await testWaterAndDenimContracts();
 console.log("Reference example parity checks passed.");

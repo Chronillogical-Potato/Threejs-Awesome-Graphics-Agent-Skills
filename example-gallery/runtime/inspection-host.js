@@ -16,7 +16,7 @@ if (!adapter || typeof adapter.setup !== "function") {
   throw new Error(`${modulePath} must default-export an inspection adapter.`);
 }
 
-const rawWebGpu = adapter.backend === "raw-webgpu";
+const rawWebGpu = adapter.backend === "raw-webgpu" || adapter.backend === "raw-webgl";
 const THREE = adapter.backend === "webgpu"
   ? await import("three/webgpu")
   : await import("three");

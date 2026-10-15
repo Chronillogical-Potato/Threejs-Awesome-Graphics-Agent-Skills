@@ -1873,6 +1873,119 @@
           "the standalone page worker, navigation, performance panel, inspection UI, loading veil, and error presentation are omitted"
         ]
       }
+    ],
+    "threejs-water-optics/photoreal-water": [
+      {
+        "source": "author-local-photoreal-water",
+        "files": [
+          "photoreal_water.html"
+        ],
+        "mechanisms": [
+          "deterministic 256-square gravity-capillary spectrum, packed slope FFT and mip-variance filtering",
+          "local wave-equation ripples with central-difference slopes and Laplacian focusing",
+          "three-index additive differential-area caustics, refracted pebble bed and volume extinction",
+          "Beckmann sun glints and polychromatic aperture-PSF FFT convolution"
+        ],
+        "assets": [
+          {
+            "sourcePath": "embedded/pebbles.js",
+            "localPath": "skills/threejs-water-optics/assets/photoreal-water/pebbles.js"
+          }
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "Effect functions accept a caller-owned WebGL2 context, camera basis, clock and drawing-buffer size; the gallery owns orbit, pan, input and the frame loop.",
+          "The embedded JPEG is retained byte-for-byte as a data URL asset module.",
+          "Gallery pause stops ripple steps; deterministic diagnostic selection reuses the existing caustics, no-post and glare views.",
+          "Camera navigation adds orbit and pan with an air-side clamp; default optical parameters and camera sway are retained."
+        ]
+      }
+    ],
+    "threejs-procedural-materials/simulated-tearable-denim": [
+      {
+        "source": "author-local-tearable-denim",
+        "files": [
+          "src/gpu/util.ts",
+          "src/gpu/device.ts",
+          "src/simulation/gpu/contact.ts",
+          "src/simulation/gpu/topology.ts",
+          "src/simulation/gpu/settle.ts",
+          "src/simulation/gpu/selfcontact.ts",
+          "src/simulation/gpu/interaction.ts",
+          "src/simulation/gpu/solver.ts",
+          "src/simulation/gpu/wgsl/gate.wgsl",
+          "src/simulation/gpu/wgsl/common.wgsl",
+          "src/simulation/gpu/wgsl/interact.wgsl",
+          "src/simulation/gpu/wgsl/multigrid.wgsl",
+          "src/simulation/gpu/wgsl/rowfine.wgsl",
+          "src/simulation/gpu/wgsl/smooth.wgsl",
+          "src/simulation/gpu/wgsl/selfcontact.wgsl",
+          "src/simulation/gpu/wgsl/state.wgsl",
+          "src/simulation/gpu/wgsl/rowcoarse.wgsl",
+          "src/simulation/gpu/wgsl/step.wgsl",
+          "src/simulation/gpu/wgsl/pcg.wgsl",
+          "src/simulation/gpu/wgsl/contact.wgsl",
+          "src/simulation/gpu/wgsl/scan.wgsl",
+          "src/simulation/gpu/wgsl/drag.wgsl",
+          "src/simulation/gpu/wgsl/energy.wgsl",
+          "src/simulation/gpu/wgsl/rigid_frame.wgsl",
+          "src/simulation/gpu/wgsl/yarnfield.wgsl",
+          "src/simulation/gpu/wgsl/rigid_apply.wgsl",
+          "src/simulation/gpu/wgsl/assemble.wgsl",
+          "src/simulation/gpu/wgsl/rigid_spin.wgsl",
+          "src/simulation/yarnField.ts",
+          "src/simulation/hand.ts",
+          "src/simulation/lattice.ts",
+          "src/simulation/grip.ts",
+          "src/simulation/axial.ts",
+          "src/simulation/laws.ts",
+          "src/simulation/scene.ts",
+          "src/simulation/materialPoint.ts",
+          "src/simulation/material.ts",
+          "src/shared/noise.ts",
+          "src/rendering/math.ts",
+          "src/rendering/camera.ts",
+          "src/rendering/renderer.ts",
+          "src/rendering/wgsl/thread_prep.wgsl",
+          "src/rendering/wgsl/pieces.wgsl",
+          "src/rendering/wgsl/threads.wgsl",
+          "src/rendering/wgsl/render_common.wgsl",
+          "src/rendering/wgsl/thread_tail.wgsl",
+          "src/rendering/wgsl/thread.wgsl",
+          "src/rendering/wgsl/surface.wgsl",
+          "src/rendering/wgsl/material_map.wgsl",
+          "src/rendering/wgsl/refine.wgsl",
+          "src/rendering/wgsl/fuzz.wgsl",
+          "src/rendering/wgsl/thread_geom.wgsl",
+          "src/rendering/wgsl/post.wgsl",
+          "src/rendering/wgsl/edge_roots.wgsl",
+          "src/rendering/wgsl/edgefield.wgsl",
+          "src/rendering/wgsl/render_light.wgsl",
+          "src/rendering/wgsl/weave_tile.wgsl",
+          "src/engine/worker.ts"
+        ],
+        "mechanisms": [
+          "implicit anisotropic yarn mechanics with multigrid-preconditioned PCG, slip, damage and self-contact",
+          "material-space yarn damage, grip-connected patches and detached-piece graph labeling",
+          "connectivity-corrected refined twill surface, explicit yarn runs, loose tails and edge-rooted fibres",
+          "analytic 3/1 weave tile mipmaps, fibre BRDF and two cloth shadow maps"
+        ],
+        "assets": [
+          {
+            "sourcePath": "public/drape.bin.module.js",
+            "localPath": "skills/threejs-procedural-materials/assets/simulated-tearable-denim/settled-drape.js"
+          }
+        ],
+        "boundary": "reference-extraction",
+        "divergences": [
+          "The effect retains modular TypeScript and WGSL; scene.ts is renamed fabric-config.ts and imports are explicit about that boundary.",
+          "The gallery owns device/context acquisition, camera, pointer binding, scheduling, sizing and UI. Free-play grip, settling, reset and fixed-step mechanics remain in the reusable system.",
+          "Stage, creatures, floor/mount rendering, floor textures, floor coverage maps and playback audio are excluded. Floor contact is permanently disabled; reserved uniform slots and inactive shader branches preserve buffer layouts.",
+          "Fracture telemetry slots remain in the solver without audio playback. A numeric connectivity threshold is kept without importing the CPU study solver.",
+          "The default ACES/sRGB post path is retained; staged grade/glitch paths are omitted. Surface-only normal/wear/presence diagnostics leave final-mode arithmetic intact.",
+          "Settled positions retain their exact bytes and are checked against the mechanics hash before upload. No floor is introduced for detached pieces."
+        ]
+      }
     ]
   }
 }

@@ -80,6 +80,22 @@ Use it to:
 
 An example remains runnable standalone. The runtime becomes a no-op parent bridge when the page is not inside the gallery.
 
+## Water and denim inspection
+
+`photoreal-water` uses a caller-owned WebGL2 context (`raw-webgl` backend).
+Drag to orbit, right-drag to pan and tap to disturb the surface. The camera
+stays above water. Its diagnostics show caustics, no-post and isolated glare.
+
+`simulated-tearable-denim` uses raw WebGPU. Drag with the primary pointer to
+grip and tear, right-drag to orbit, middle-drag to pan, and scroll while gripping
+to change grip depth. Use **Reset denim** or R to restore the settled state.
+Normal, wear and yarn-presence modes inspect the sheet while explicit fibres
+keep their shading. There is no floor; detached pieces fall out of view.
+The denim drawing buffer retains a two-million-pixel cap.
+
+Nonvisual material-state, module and lossless asset contracts run with the
+other examples under `npm run test:references`.
+
 ## Gallery self-test
 
 The development fixture is excluded from the normal gallery:
