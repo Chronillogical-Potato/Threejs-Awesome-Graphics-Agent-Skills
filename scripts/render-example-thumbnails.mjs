@@ -11,7 +11,17 @@ const THUMBNAIL_DPR = 2;
 const THUMBNAIL_TIMEOUT_MS = 30000;
 
 const root = process.cwd();
-const examples = await discoverExamples(root);
+const requested = [...new Set(process.argv.slice(2))];
+if (requested.length === 0) {
+  throw new Error("Usage: node scripts/render-example-thumbnails.mjs <example-id-or-name> [...examples]");
+}
+const available = await discoverExamples(root);
+const examples = [...new Set(requested.map((name) => {
+  const matches = available.filter((example) => example.id === name || example.slug === name);
+  if (matches.length === 0) throw new Error(`Unknown example: ${name}`);
+  if (matches.length > 1) throw new Error(`Ambiguous example: ${name}. Use the full skill/example ID.`);
+  return matches[0];
+}))];
 const { server, url } = await startExampleGallery({
   host: "127.0.0.1",
   port: 0,
