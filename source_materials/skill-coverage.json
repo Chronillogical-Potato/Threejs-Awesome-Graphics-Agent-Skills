@@ -92,7 +92,10 @@
         "threejs-procedural-materials/deformable-sand",
         "threejs-procedural-materials/simulated-cloth",
         "threejs-procedural-materials/simulated-fur",
-        "threejs-procedural-materials/simulated-tearable-denim"
+        "threejs-procedural-materials/simulated-tearable-denim",
+        "threejs-procedural-materials/simulated-paper-burning",
+        "threejs-procedural-materials/luminescent-jellyfish",
+        "threejs-procedural-materials/luminescent-butterfly"
       ],
       "rationale": "Material identity must be demonstrated under real geometry and lighting, including coupled texture-backed PBR and procedural channels, transmissive bodies, wavelength-dependent optics, a deforming softbody whose geometry, thickness, absorption, shadow, and caustic fields share one physical state, deformable granular sand whose mass, displacement, grain response, glints, and shadows share one simulation state, woven cloth whose material microstructure accompanies its simulated yarn network, and groomed fur whose visible strand shading and interactive contact share one GPU state."
     },
@@ -199,7 +202,8 @@
       "classification": "example-required",
       "evidence": [
         "threejs-water-optics/interactive-pool-volume",
-        "threejs-water-optics/photoreal-water"
+        "threejs-water-optics/photoreal-water",
+        "threejs-water-optics/luminescent-water"
       ],
       "rationale": "Bounded heightfield displacement, shared simulated normals, pool-volume refraction, absorption, caustics, and interaction coupling require runnable shader evidence."
     }

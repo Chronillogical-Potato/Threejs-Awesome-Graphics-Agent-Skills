@@ -1,0 +1,37 @@
+{
+  "title": "Luminescent Water",
+  "description": "A shallow-water river with coupled flow, bioluminescent excitation, advected foam, dispersive caustics, wet rock and moonlit optics.",
+  "backend": "WebGPU / TSL",
+  "threePackage": "three-0180",
+  "techniques": [
+    "staggered shallow-water transport",
+    "advected luminous film",
+    "RGB caustics",
+    "coupled wet terrain"
+  ],
+  "defaultViewport": {
+    "width": 1440,
+    "height": 1080
+  },
+  "defaultDpr": 1.5,
+  "debugModes": [],
+  "diagnosticModes": [
+    {
+      "value": "final",
+      "label": "Final"
+    },
+    {
+      "value": "nopost",
+      "label": "No post"
+    },
+    {
+      "value": "caustics",
+      "label": "Caustics"
+    },
+    {
+      "value": "glow",
+      "label": "Glow"
+    }
+  ],
+  "controls": []
+}

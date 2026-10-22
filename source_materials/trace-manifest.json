@@ -1,6 +1,63 @@
 {
   "schemaVersion": 1,
   "sources": {
+  "author-local-luminescent-water": {
+    "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+    "revision": "897aaa0a49f9346f342993e1eb74a30479f82614",
+    "license": "MIT",
+    "localDirectory": "luminescent-water",
+    "files": {
+      "index.html": "9b90beb1e260b9d2669d299ff04513a3a225e922aa4414d72950a75286ba5a05"
+    },
+    "assets": {
+      "rock-ao.jpg": "f47f951afbc63b593d22e1d7c545ea4616398d5ced8682b31a33780058633531",
+      "rock-basecolor.jpg": "7296d674b3ac581f6368d3a8b9c52157d9859a33268eaaad64ce2a5c17d95f37",
+      "rock-displacement.jpg": "ef4cea86525081ad1d39142f0a54c4c4d4b092d5108f1c10373c05d165074a8d",
+      "rock-normal.jpg": "50b9c1f2163a33a9ae733686793e5b1473122d18aed061930ddcd4c056150e1f",
+      "rock-roughness.jpg": "a8abff8c731ebf1ca89a2e845f16255f3c2d7bd3fe9674b7866fbd9fa9824fde",
+      "bg.hdri": "452072b8b262bff5fb4799d3cecb85abb186ce9b658b25f328a1d66da6b18954"
+    }
+  },
+  "author-local-simulated-paper-burning": {
+    "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+    "revision": "897aaa0a49f9346f342993e1eb74a30479f82614",
+    "license": "MIT",
+    "localDirectory": "burning-paper",
+    "files": {
+      "index.html": "a9b1fc54eecf2f06ae7e55100ef452742ac0bdc58d0cad569acd576f6c3002e7"
+    },
+    "assets": {
+      "floor-basecolor.jpg": "5a47acac60eb0499a55b1c2dca6b462ab436fc343c0e98986cafa0d4983a506a",
+      "floor-height.jpg": "b2d1c82ea364320530699c6dc8c84e8ae98261fecaf055916d5f37bfead97cd5",
+      "floor-normal.jpg": "dad60b08eaf1c26736bbc0e4bf45d6e1b0a85368e0b0e297fd973187c62b2d0a",
+      "floor-roughness.jpg": "5591f60f5be2d3746187abd7a4af5847f73a00221d28b4db194463dd02ff7488",
+      "env-daylight.hdr": "d9581004963990b0e740e26f6468b87903bc2b79c1efd54adfbac985fbf7ec1b",
+      "tibo.png": "9c3ae7be6758d679d6c58008c3e2f25bc952afb2433c347453b77fd5963b0bf7"
+    }
+  },
+  "author-local-luminescent-jellyfish": {
+    "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+    "revision": "897aaa0a49f9346f342993e1eb74a30479f82614",
+    "license": "MIT",
+    "localDirectory": "luminescent-jellyfish",
+    "files": {
+      "index.html": "eedf048c99cdfc74ae0a789a4f8600aefe8ebd7c1f7207ddfdd74dd131b534ba"
+    }
+  },
+  "author-local-luminescent-butterfly": {
+    "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
+    "revision": "897aaa0a49f9346f342993e1eb74a30479f82614",
+    "license": "MIT",
+    "localDirectory": "luminescent-butterfly",
+    "files": {
+      "index.html": "e92fc8af775ffe7d5d2769789bc44846040880ea0b462fc3a3f039637f441fd3"
+    },
+    "assets": {
+      "textures/rock-basecolor.jpg": "7d387e01cad601ce49c35d9d9161f7f8f097de0e32e60f8f2108ae1787854ccf",
+      "textures/rock-normal.jpg": "003dcaa856ce97d2673379a26a444cc0637f0cdd46d7f5de5c3dd263dfbf3f76",
+      "textures/rock-roughness.jpg": "1b3834e6d15be99c06653688ed6c43b492163f6eaacfa56bd7397cf59165e8d6"
+    }
+  },
     "author-local-coastal-breaker-ocean": {
       "repository": "https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills",
       "revision": "98453747cc0678f6a5d910f38d7483596a5f9a40",

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "canonicalization": "esbuild JavaScript whitespace canonicalization; comments omitted; explicit boundary adaptations applied during intake review",
+  "regions": [
+    {
+      "name": "water transport, advected fields, caustics, LOD and materials",
+      "file": "skills/threejs-water-optics/examples/luminescent-water/luminescent-water.js",
+      "start": "const uDt =",
+      "end": "// chunk masks:",
+      "sha256": "988e28fbe8a7e9dc345e11c33119f4f4c6b5d91a171604c3025eb5b86ad6f8ff"
+    },
+    {
+      "name": "water sub-grid capillary and foam texture",
+      "file": "skills/threejs-water-optics/examples/luminescent-water/luminescent-water.js",
+      "start": "function generateDetail",
+      "end": "const macroTex =",
+      "sha256": "4b8822760cf7d6ebc87802f6f092ffd50d39c7f166fa721fc86dcb664898cf52"
+    },
+    {
+      "name": "paper crumpled rest lattice and material heterogeneity",
+      "file": "skills/threejs-procedural-materials/examples/simulated-paper-burning/simulated-paper-burning.js",
+      "start": "function mulberry32",
+      "end": "const U =",
+      "sha256": "c2603237a0abeea564ff83320e4ab42b81f4049a6707c093f7e5aba5379887b5"
+    },
+    {
+      "name": "paper mechanics, combustion and fluid kernels",
+      "file": "skills/threejs-procedural-materials/examples/simulated-paper-burning/simulated-paper-burning.js",
+      "start": "const volTex =",
+      "end": "// ---- paper:",
+      "sha256": "5474c5f308ded50e36c073a78699a8583a32a1e4cc91b2f466938b91df86791c"
+    },
+    {
+      "name": "paper material and volume compositor",
+      "file": "skills/threejs-procedural-materials/examples/simulated-paper-burning/simulated-paper-burning.js",
+      "start": "// ---- paper:",
+      "end": "//  Simulation driver",
+      "sha256": "42e4266028b993fea1fa409893c18776f41c8c2876de443f6992ec0f12f0e544"
+    },
+    {
+      "name": "paper fixed mechanics and fluid orchestration",
+      "file": "skills/threejs-procedural-materials/examples/simulated-paper-burning/simulated-paper-burning.js",
+      "start": "let simTime =",
+      "end": "\nreset();",
+      "sha256": "08be6ac58ad8b3b7be0ecf61674465c24aa7a8f8616311c69c067fd24d9afcec"
+    },
+    {
+      "name": "jellyfish anatomy, motion, appendages, tissue and particles",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-jellyfish/luminescent-jellyfish.js",
+      "start": "const PHI_MAX =",
+      "end": "const MSAA =",
+      "sha256": "94f9d326bb37684237c90acfec37411f27fb823ff26a5a6a27b4d243e8c653bf"
+    },
+    {
+      "name": "jellyfish ordered optical layer compositor",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-jellyfish/luminescent-jellyfish.js",
+      "start": "const hdrRT =",
+      "end": "// final:",
+      "sha256": "0746be4b957ee83a4514a167cedb09de189c6bb42ccd941c3e3161509182196b"
+    },
+    {
+      "name": "jellyfish port optics and filmic output",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-jellyfish/luminescent-jellyfish.js",
+      "start": "const pipeline =",
+      "end": "const _c =",
+      "sha256": "519024843e7f3a234d75b798cf25a8cc7f5821ae2a04205cb94503370c79896e"
+    },
+    {
+      "name": "butterfly painted wings, scale lattice and microfacet glints",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "function catmullClosed",
+      "end": "const wingRig =",
+      "sha256": "ad360689508e5466d5d1c7561bcf0293aa1e071c31e78a7679bd41fa8eb11367"
+    },
+    {
+      "name": "butterfly anatomy, fur and articulation",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "const wingRig =",
+      "end": "const raycaster =",
+      "sha256": "92f58587f77eaadb0f3f940aee28f406a6d97cd0a5e0ded04e82f4bea89e023a"
+    },
+    {
+      "name": "butterfly perch pose and complete-stroke clearance",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "const perch =",
+      "end": "// six segmented legs:",
+      "trimEnd": "{",
+      "sha256": "f98c74fb7194558fe1440ba8b17341b49165179f4135a493b6af3fd8d25b24e0"
+    },
+    {
+      "name": "butterfly finite two-sided wing illumination",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "function wingEmission",
+      "end": "// Lens:",
+      "sha256": "e7ae6b7980d947e69e11286a27263205434fe5bd508466c30ff5d3c1c7baac4b"
+    },
+    {
+      "name": "butterfly calibrated nine-blade lens",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "const focusU =",
+      "end": "// Glowworms",
+      "sha256": "32c3483323f85d254caa83b74faba499c059f69c47fd4f042ca7a4d4cf379769"
+    },
+    {
+      "name": "butterfly swept-geometry audit",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "function auditButterfly",
+      "end": "const butterflyFocus =",
+      "sha256": "f6c7d4279e0486ce021af42ceebee46154170900a35dc6885f90f49a2a6629d6"
+    },
+    {
+      "name": "butterfly AO, lens bokeh, exposure and animation",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "const pipeline =",
+      "end": "const bufV2 =",
+      "sha256": "1c1af1c93fe09d028f2d0366c91931ebf0bfc100d44a671c4008895585b055b5"
+    },
+    {
+      "name": "butterfly light-coupled particles and lens sprites",
+      "file": "skills/threejs-procedural-materials/examples/luminescent-butterfly/luminescent-butterfly.js",
+      "start": "const emitterMaterials =",
+      "end": "await setupStage",
+      "sha256": "0921e09e63f8c88ad2339d8b8ee0c206606bc0886246182cab2f3f7df88174a3"
+    },
+    {
+      "name": "butterfly botanical receiver",
+      "file": "example-gallery/examples/threejs-procedural-materials/luminescent-butterfly/stage.js",
+      "start": "function widthProfile",
+      "end": "return {\n  rose, roseMesh",
+      "sha256": "c1f86aac86a309d9ce1e8b89f379a2eafcd01acb566edded8f6070e9ad4f3d01"
+    },
+    {
+      "name": "water exact channel height field",
+      "file": "example-gallery/examples/threejs-water-optics/luminescent-water/terrain.js",
+      "start": "const PI2 =",
+      "end": "async function loadBitmap",
+      "sha256": "f55140c6b511a2510ad343a13697e88a72ede2c69eff9df1511f16777d53bb60"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "title": "Luminescent Butterfly",
+  "description": "An articulated butterfly whose microscopic wing scales, coherent luminescent masks and finite wing emitters illuminate a dew-covered perch.",
+  "backend": "WebGPU / TSL",
+  "threePackage": "three-0186",
+  "techniques": [
+    "articulated wing scales",
+    "stochastic microfacet glints",
+    "finite wing emitters",
+    "thin-lens bokeh"
+  ],
+  "defaultViewport": {
+    "width": 1440,
+    "height": 1080
+  },
+  "defaultDpr": 2,
+  "debugModes": [],
+  "diagnosticModes": [
+    {
+      "value": "final",
+      "label": "Final"
+    },
+    {
+      "value": "nopost",
+      "label": "No post"
+    },
+    {
+      "value": "scene",
+      "label": "Scene"
+    },
+    {
+      "value": "defocus",
+      "label": "Defocus"
+    }
+  ],
+  "controls": []
+}

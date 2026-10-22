@@ -78,6 +78,16 @@ try {
       `gallery server should not serve source_materials/ assets; got HTTP ${response.status}`,
     );
   }
+  for (const example of examples.filter(example => example.threePackage)) {
+    const documentResponse = await fetch(new URL(example.entry, url));
+    const html = await documentResponse.text();
+    if (documentResponse.status !== 200 || html.includes('/node_modules/three/') ||
+        !html.includes(`"three": "/node_modules/${example.threePackage}/build/three.webgpu.js"`)) {
+      errors.push(`${example.id}: inspection host does not select its exact renderer revision`);
+    }
+    const rendererResponse = await fetch(new URL(`/node_modules/${example.threePackage}/build/three.webgpu.js`, url), { method: 'HEAD' });
+    if (rendererResponse.status !== 200) errors.push(`${example.id}: exact renderer package is not served`);
+  }
 } finally {
   await new Promise((resolve) => server.close(resolve));
 }

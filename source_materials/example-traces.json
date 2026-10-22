@@ -1,6 +1,160 @@
 {
   "schemaVersion": 1,
   "examples": {
+  "threejs-water-optics/luminescent-water": [
+    {
+      "source": "author-local-luminescent-water",
+      "files": [
+        "index.html"
+      ],
+      "mechanisms": [
+        "staggered shallow-water transport",
+        "advected luminous film",
+        "RGB caustics",
+        "coupled wet terrain"
+      ],
+      "assets": [
+        {
+          "sourcePath": "rock-ao.jpg",
+          "localPath": "example-gallery/examples/threejs-water-optics/luminescent-water/assets/rock-ao.jpg"
+        },
+        {
+          "sourcePath": "rock-basecolor.jpg",
+          "localPath": "example-gallery/examples/threejs-water-optics/luminescent-water/assets/rock-basecolor.jpg"
+        },
+        {
+          "sourcePath": "rock-displacement.jpg",
+          "localPath": "example-gallery/examples/threejs-water-optics/luminescent-water/assets/rock-displacement.jpg"
+        },
+        {
+          "sourcePath": "rock-normal.jpg",
+          "localPath": "example-gallery/examples/threejs-water-optics/luminescent-water/assets/rock-normal.jpg"
+        },
+        {
+          "sourcePath": "rock-roughness.jpg",
+          "localPath": "example-gallery/examples/threejs-water-optics/luminescent-water/assets/rock-roughness.jpg"
+        },
+        {
+          "sourcePath": "bg.hdri",
+          "localPath": "example-gallery/examples/threejs-water-optics/luminescent-water/assets/bg.hdri"
+        }
+      ],
+      "boundary": "reference-extraction",
+      "divergences": [
+        "readable JavaScript is reorganized into a reusable effect factory and caller-owned development scene; mathematical kernels, geometry, calibrated constants and effect optics are retained",
+        "page typography, overlays, cinematic controls, FPS displays and playback audio are omitted; navigation remains in the development adapter",
+        "static supporting assets are byte-identical and owned by the development adapter; no runtime or checks depend on the local intake",
+        "visual inspection is explicitly delegated to the author; only nonvisual checks are performed",
+        "the inspection document selects the exact Three.js 0.180.0 renderer, TSL and addons; PostProcessing is retained; navigation uses the supplied periodic CPU terrain lookup and nominal water-level clearance without simulation-buffer readback"
+      ]
+    }
+  ],
+  "threejs-procedural-materials/simulated-paper-burning": [
+    {
+      "source": "author-local-simulated-paper-burning",
+      "files": [
+        "index.html"
+      ],
+      "mechanisms": [
+        "coupled sheet combustion",
+        "GPU sheet mechanics",
+        "3D pyro fluid",
+        "soot deposition"
+      ],
+      "assets": [
+        {
+          "sourcePath": "floor-basecolor.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/simulated-paper-burning/assets/floor-basecolor.jpg"
+        },
+        {
+          "sourcePath": "floor-height.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/simulated-paper-burning/assets/floor-height.jpg"
+        },
+        {
+          "sourcePath": "floor-normal.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/simulated-paper-burning/assets/floor-normal.jpg"
+        },
+        {
+          "sourcePath": "floor-roughness.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/simulated-paper-burning/assets/floor-roughness.jpg"
+        },
+        {
+          "sourcePath": "env-daylight.hdr",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/simulated-paper-burning/assets/env-daylight.hdr"
+        },
+        {
+          "sourcePath": "tibo.png",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/simulated-paper-burning/assets/tibo.png"
+        }
+      ],
+      "boundary": "reference-extraction",
+      "divergences": [
+        "readable JavaScript is reorganized into a reusable effect factory and caller-owned development scene; mathematical kernels, geometry, calibrated constants and effect optics are retained",
+        "page typography, overlays, cinematic controls, FPS displays and playback audio are omitted; navigation remains in the development adapter",
+        "static supporting assets are byte-identical and owned by the development adapter; no runtime or checks depend on the local intake",
+        "visual inspection is explicitly delegated to the author; only nonvisual checks are performed",
+        "paper artwork is injected as an already loaded texture; the development adapter awaits all four floor textures before completing setup so a single-frame thumbnail uses the textured receiver; the receiver shader consumes the same soot and fire-light fields; orbit and pan remain above the floor"
+      ]
+    }
+  ],
+  "threejs-procedural-materials/luminescent-jellyfish": [
+    {
+      "source": "author-local-luminescent-jellyfish",
+      "files": [
+        "index.html"
+      ],
+      "mechanisms": [
+        "Verlet appendages",
+        "layered tissue optics",
+        "underwater path radiance",
+        "depth-sliced particles"
+      ],
+      "boundary": "reference-extraction",
+      "divergences": [
+        "readable JavaScript is reorganized into a reusable effect factory and caller-owned development scene; mathematical kernels, geometry, calibrated constants and effect optics are retained",
+        "page typography, overlays, cinematic controls, FPS displays and playback audio are omitted; navigation remains in the development adapter",
+        "static supporting assets are byte-identical and owned by the development adapter; no runtime or checks depend on the local intake",
+        "visual inspection is explicitly delegated to the author; only nonvisual checks are performed",
+        "render-target resizing takes explicit drawing-buffer dimensions; free navigation retains diver float and subject autofocus; query diagnostics become explicit options; the inspection document selects Three.js 0.186.1 including its MRT attachment-clear API"
+      ]
+    }
+  ],
+  "threejs-procedural-materials/luminescent-butterfly": [
+    {
+      "source": "author-local-luminescent-butterfly",
+      "files": [
+        "index.html"
+      ],
+      "mechanisms": [
+        "articulated wing scales",
+        "stochastic microfacet glints",
+        "finite wing emitters",
+        "thin-lens bokeh"
+      ],
+      "assets": [
+        {
+          "sourcePath": "textures/rock-basecolor.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/luminescent-butterfly/assets/rock-basecolor.jpg"
+        },
+        {
+          "sourcePath": "textures/rock-normal.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/luminescent-butterfly/assets/rock-normal.jpg"
+        },
+        {
+          "sourcePath": "textures/rock-roughness.jpg",
+          "localPath": "example-gallery/examples/threejs-procedural-materials/luminescent-butterfly/assets/rock-roughness.jpg"
+        }
+      ],
+      "boundary": "reference-extraction",
+      "divergences": [
+        "readable JavaScript is reorganized into a reusable effect factory and caller-owned development scene; mathematical kernels, geometry, calibrated constants and effect optics are retained",
+        "page typography, overlays, cinematic controls, FPS displays and playback audio are omitted; navigation remains in the development adapter",
+        "static supporting assets are byte-identical and owned by the development adapter; no runtime or checks depend on the local intake",
+        "visual inspection is explicitly delegated to the author; only nonvisual checks are performed",
+        "botany, cave, framing and scene lighting belong to the development adapter; perch contact and complete-stroke clearance remain in the effect with generalized perch identifiers; lens imaging, microfacet glints, wing articulation and finite emission remain coupled; Three.js 0.186.1 is retained, camera-boundary raycasts run only on navigation changes, and viewing resolution uses the gallery's standard fixed DPR"
+      ]
+    }
+  ],
     "threejs-spectral-ocean/coastal-breaker-ocean": [
       {
         "source": "author-local-coastal-breaker-ocean",

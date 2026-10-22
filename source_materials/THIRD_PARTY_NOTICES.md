@@ -257,3 +257,14 @@ files with asset-specific notices.
 - The complete GPL text is included beside the asset and in
   `source_materials/GPL-3.0.txt`.
 - Stage, floor assets, mount geometry and playback audio are not distributed.
+
+## Author-owned luminescent and combustion examples
+
+- Author: Scott, supplied directly by the copyright holder.
+- License: MIT, explicitly declared by the author for all four projects and
+  their supplied assets.
+- Implementations: `luminescent-water`, `simulated-paper-burning`,
+  `luminescent-jellyfish` and `luminescent-butterfly` under their respective
+  water-optics and procedural-materials skill example directories.
+- Supporting rock maps, HDR environments, paper artwork and floor maps remain
+  in the development gallery; audio and the reference photograph are omitted.

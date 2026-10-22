@@ -117,6 +117,7 @@ async function loadExample(projectRoot, candidate, origin) {
       : [],
     backend:
       typeof metadata.backend === "string" ? metadata.backend : "unspecified",
+    threePackage: metadata.threePackage ?? null,
     entry: origin === "skill"
       ? `/example-gallery/runtime/index.html?module=/${relativeDirectory}/scene.js`
       : `/${relativeDirectory}/index.html`,

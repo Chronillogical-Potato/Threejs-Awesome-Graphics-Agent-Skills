@@ -1,6 +1,50 @@
 {
   "schemaVersion": 1,
   "cases": [
+  {
+    "request": "A shallow-water river with coupled flow, bioluminescent excitation, advected foam, dispersive caustics, wet rock and moonlit optics.",
+    "routes": [
+      {
+        "skill": "threejs-water-optics",
+        "signals": [
+          "luminescent shallow-water rivers"
+        ]
+      }
+    ]
+  },
+  {
+    "request": "A crumpled sheet whose material-lattice combustion drives fracture, char, ash, volumetric flames, smoke, soot and nearby illumination.",
+    "routes": [
+      {
+        "skill": "threejs-procedural-materials",
+        "signals": [
+          "simulated paper burning"
+        ]
+      }
+    ]
+  },
+  {
+    "request": "Swimming jellyfish with simulated appendages, layered translucent tissue, bioluminescent photocytes and underwater light transport.",
+    "routes": [
+      {
+        "skill": "threejs-procedural-materials",
+        "signals": [
+          "luminescent jellyfish"
+        ]
+      }
+    ]
+  },
+  {
+    "request": "An articulated butterfly whose microscopic wing scales, coherent luminescent masks and finite wing emitters illuminate a dew-covered perch.",
+    "routes": [
+      {
+        "skill": "threejs-procedural-materials",
+        "signals": [
+          "luminescent butterflies"
+        ]
+      }
+    ]
+  },
     {
       "request": "Frame a scale-aware chase camera with thrust lag and a side-camera handoff.",
       "routes": [
@@ -758,6 +802,8 @@
     {
       "skill": "threejs-procedural-materials",
       "mustMention": [
+        "$threejs-procedural-vfx",
+        "$threejs-water-optics",
         "$threejs-procedural-fields",
         "$threejs-procedural-planets",
         "$threejs-parallax-occlusion-mapping",
@@ -809,6 +855,7 @@
     {
       "skill": "threejs-water-optics",
       "mustMention": [
+        "$threejs-procedural-materials",
         "$threejs-spectral-ocean",
         "$threejs-precipitation-surfaces"
       ]
@@ -816,6 +863,7 @@
     {
       "skill": "threejs-procedural-vfx",
       "mustMention": [
+        "$threejs-procedural-materials",
         "$threejs-temporal-surfaces",
         "$threejs-precipitation-surfaces",
         "$threejs-volumetric-clouds",

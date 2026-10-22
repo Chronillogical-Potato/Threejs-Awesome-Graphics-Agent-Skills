@@ -96,6 +96,32 @@ The denim drawing buffer retains a two-million-pixel cap.
 Nonvisual material-state, module and lossless asset contracts run with the
 other examples under `npm run test:references`.
 
+## Luminescent and combustion examples
+
+- `luminescent-water`: orbit, pan and zoom with the periodic terrain/nominal
+  water-level camera guard. Shift-drag stirs the flow.
+- `simulated-paper-burning`: orbit, pan and zoom above the floor; click the
+  sheet to ignite another location. The burn, flame-out, wind and reset cycle
+  runs automatically.
+- `luminescent-jellyfish`: free orbit, pan and zoom with diver float and
+  subject autofocus.
+- `luminescent-butterfly`: free orbit, pan and zoom inside the cave, above its
+  supporting terrain, with automatic optical focus.
+
+These scene viewports contain no overlays, sound or cinematic shot controls.
+Their diagnostic modes remain available to the runtime without scene UI.
+Visual inspection is left to the author; the nonvisual checks do not run them.
+
+These adapters select exact renderer revisions through `threePackage` in their
+metadata: water uses `three-0180`, and the other three use `three-0186`. The
+server applies that selection to the complete inspection document, including
+the shared runtime and OrbitControls. Install from the lockfile with
+`npm ci --legacy-peer-deps` when adding these aliases to an existing checkout.
+
+Thumbnail scheduling, timeouts, startup sizing and DPR use the standard gallery
+implementation. Stationary butterfly viewing does not repeat cave-triangle
+raycasts.
+
 ## Gallery self-test
 
 The development fixture is excluded from the normal gallery:

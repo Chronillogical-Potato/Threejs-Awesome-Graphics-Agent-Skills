@@ -1,0 +1,37 @@
+{
+  "title": "Luminescent Jellyfish",
+  "description": "Swimming jellyfish with simulated appendages, layered translucent tissue, bioluminescent photocytes and underwater light transport.",
+  "backend": "WebGPU / TSL",
+  "threePackage": "three-0186",
+  "techniques": [
+    "Verlet appendages",
+    "layered tissue optics",
+    "underwater path radiance",
+    "depth-sliced particles"
+  ],
+  "defaultViewport": {
+    "width": 1440,
+    "height": 1080
+  },
+  "defaultDpr": 1.5,
+  "debugModes": [],
+  "diagnosticModes": [
+    {
+      "value": "final",
+      "label": "Final"
+    },
+    {
+      "value": "nopost",
+      "label": "No post"
+    },
+    {
+      "value": "no-water-blur",
+      "label": "No water blur"
+    },
+    {
+      "value": "no-defocus",
+      "label": "No defocus"
+    }
+  ],
+  "controls": []
+}

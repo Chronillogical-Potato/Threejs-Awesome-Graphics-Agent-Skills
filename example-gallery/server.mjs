@@ -10,6 +10,7 @@ import { fileURLToPath } from "node:url";
 import { transform } from "esbuild";
 import { discoverExamples } from "./discovery.mjs";
 import { createThumbnailRenderer } from "./thumbnail-renderer.mjs";
+import { inspectionRuntimeDocument } from "./runtime/renderer-imports.mjs";
 
 const galleryRoot = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(galleryRoot, "..");
@@ -332,6 +333,21 @@ export function createExampleGalleryServer({ includeFixtures = false } = {}) {
 
       if (url.pathname === "/" || url.pathname === "/gallery") {
         await sendFile(request, response, path.join(publicRoot, "index.html"));
+        return;
+      }
+
+      if (url.pathname === "/example-gallery/runtime/index.html") {
+        const examples = await discoverExamples(projectRoot, { includeFixtures });
+        const example = examples.find(candidate =>
+          new URL(candidate.entry, url).searchParams.get('module') === url.searchParams.get('module'));
+        const template = await readFile(path.join(galleryRoot, 'runtime/index.html'), 'utf8');
+        const payload = inspectionRuntimeDocument(template, example?.threePackage);
+        response.writeHead(200, {
+          'content-type': 'text/html; charset=utf-8',
+          'cache-control': 'no-store',
+          'content-length': Buffer.byteLength(payload),
+        });
+        response.end(request.method === 'HEAD' ? undefined : payload);
         return;
       }
 

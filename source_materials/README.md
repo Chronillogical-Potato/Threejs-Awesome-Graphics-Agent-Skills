@@ -1369,3 +1369,79 @@ compiled 29 WGSL modules, encoded all four output modes, caused actual yarn
 failure by dragging, and passed picking, release, reset and no-floor checks.
 The complete package tests and freshness check pass, and the package dry run
 includes 67 new skill files with no gallery/intake files. Version stays 0.11.0.
+
+## Luminescent water, burning paper, jellyfish and butterfly intake
+
+All four local projects and their supplied assets are MIT under the author's
+explicit ownership and license declaration. They were inspected as readable
+HTML/JavaScript, not executed. Intake is recorded against repository baseline
+`897aaa0a49f9346f342993e1eb74a30479f82614` at
+https://github.com/scottstts/Threejs-Awesome-Graphics-Agent-Skills; the SHA-256
+digests below identify the exact uncommitted local inputs.
+
+| Local project | HTML SHA-256 | Consumption |
+| --- | --- | --- |
+| `luminescent-water/index.html` | `9b90beb1e260b9d2669d299ff04513a3a225e922aa4414d72950a75286ba5a05` | $threejs-water-optics / `luminescent-water` |
+| `burning-paper/index.html` | `a9b1fc54eecf2f06ae7e55100ef452742ac0bdc58d0cad569acd576f6c3002e7` | $threejs-procedural-materials / `simulated-paper-burning` |
+| `luminescent-jellyfish/index.html` | `eedf048c99cdfc74ae0a789a4f8600aefe8ebd7c1f7207ddfdd74dd131b534ba` | $threejs-procedural-materials / `luminescent-jellyfish` |
+| `luminescent-butterfly/index.html` | `e92fc8af775ffe7d5d2769789bc44846040880ea0b462fc3a3f039637f441fd3` | $threejs-procedural-materials / `luminescent-butterfly` |
+
+- Water retains the staggered solver, scalar transport, advected microdetail,
+  caustics, wet-bed coupling, LOD and complete optical composite. Generated
+  channel authoring, rock/HDRI assets, moon/fog, navigation and stir input
+  belong to the dev shim. Camera clearance uses the supplied periodic CPU
+  terrain lookup, nominal water level and 0.14 m clearance. It never blocks
+  startup or the frame loop on simulation-buffer readback.
+- Paper retains rest geometry, GPU sheet mechanics, combustion, pyro fluids,
+  char/fracture, flames/smoke, soot fields and the automatic burn/wind cycle.
+  The injected print, daylight environment, floor maps and receiver setup are
+  dev-shim assets. Click ignition remains available without a control panel.
+- Jellyfish retains anatomy, swimming, Verlet appendages, tissue shading,
+  surrounding-medium radiance, particles, layer compositing and lens response.
+  Free orbit/pan/zoom and the diver float belong to the dev shim.
+- Butterfly retains wing masks/scales, microfacet glints, body/fur, articulation,
+  perch-contact and full-stroke clearance, finite wing emitters, particle/lens
+  optics, exposure adaptation and its numeric intersection audit. Botany,
+  cave, rock maps, supporting lights and framing belong to the dev shim.
+
+Page overlays, sound, cinematic shot controls and shot labels are omitted.
+The supplied audio and butterfly reference image are not runtime dependencies.
+All copied binary assets retain their recorded SHA-256 digests. No gallery
+module loads from the intake directories.
+
+Version-sensitive integration selects the exact supplied engine revisions per
+inspection document: water uses `three-0180` (`npm:three@0.180.0`), and paper,
+jellyfish and butterfly use `three-0186` (`npm:three@0.186.1`). Complete document
+import maps keep renderer, TSL, controls and display addons on one revision.
+The rest of the gallery retains its existing Three.js 0.185.1 dependency.
+Water retains PostProcessing; jellyfish retains MRT per-attachment clearing,
+which is absent in 0.185.1. No replacement clear/compositing scheme is added.
+
+Paper awaits all four floor texture images before completing adapter setup.
+This preserves the supplied receiver material while making its assets ready
+for the gallery's single-frame thumbnail.
+
+Butterfly's supplementary camera boundary checks run only when OrbitControls
+reports movement. The gallery uses its standard fixed DPR, thumbnail queues,
+startup deadlines and sizing. The adaptive-DPR integration is removed with
+the shared resize changes. Thumbnail composition uses the effect itself.
+
+Visual inspection, browser execution and captures are explicitly delegated
+to the author for this change. Nonvisual code/asset parity, routing, package
+validation and publishing dry-run checks do not assert visual equivalence.
+
+Nonvisual acceptance: 19 canonical JavaScript regions match the accepted
+intake arithmetic after the recorded boundary adaptations. The checks retain
+their expected digests and use only tracked implementation/fixture files, so
+they survive removal of every intake project. All four adapters link against
+their selected renderer revisions. CPU-only constructor/first-frame tests use
+real Three.js objects with a recording renderer, exercising MRT clear calls,
+water chunk visibility and compositor scheduling without GPU execution.
+Camera-clearance and geometry checks cover the runtime integration in addition
+to the mechanism digests.
+All package test components, routing, installer, asset-origin, geometry and
+freshness checks pass. The publishing dry run includes the four effects and
+four guides, excludes dev-shim assets and intake projects, and retains 0.12.0.
+The skill usability audit checked standalone wording, exact numeric contracts,
+example purpose clauses, navigation ownership and reciprocal routing boundaries.
+No GPU execution or visual parity is claimed.
