@@ -427,7 +427,9 @@ for (const example of discoveredExamples) {
 for (const skillFile of await collectFiles(skillsRoot)) {
   const relative = path.relative(skillsRoot, skillFile).split(path.sep).join("/");
   if (!relative.includes("/examples/")) continue;
+  const isExampleRender = /^[^/]+\/examples\/[^/]+\/example-render\.jpeg$/.test(relative);
   if (
+    !isExampleRender &&
     /\.(?:png|jpe?g|webp|gif|hdr|exr|bin|glb|gltf|fbx|obj|mtl|wasm|html)$/i.test(
       relative,
     )
